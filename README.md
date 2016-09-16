@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ftmatsumoto/crss.svg?token=i8QVLNqB4yQWsaYVdjks&branch=master)](https://travis-ci.com/ftmatsumoto/crss)
+
 # CrssftK
 
 > Webapp for Crossfit box!
