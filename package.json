@@ -2,6 +2,7 @@
   "name": "crssftk",
   "version": "0.0.1",
   "private": true,
+  "homepage": "http://crossfitki.com.br",
   "devDependencies": {
     "react-scripts": "0.4.1"
   },
