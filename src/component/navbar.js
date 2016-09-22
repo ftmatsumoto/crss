@@ -4,7 +4,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const navbarComponent = () => (
-  <Navbar fixedTop="true">
+  <Navbar fixedTop inverse>
     <Navbar.Header>
       <Navbar.Brand>
         <a href="/">CrossFit Ki</a>

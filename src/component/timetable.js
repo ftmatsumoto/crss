@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const tabelaHorario = () => (
+const timetable = () => (
   <Table responsive hover>
     <thead>
       <tr>
@@ -154,4 +154,4 @@ const tabelaHorario = () => (
   </Table>
 );
 
-export default tabelaHorario;
+export default timetable;
