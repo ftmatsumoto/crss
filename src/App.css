@@ -1,22 +1,100 @@
-/*html {
-  background: url('../CrossfitKi.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+/*Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+/*body {
+    padding-top: 50px;
 }
 */
-
-.homecontainer {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+body {
   width: 100%;
-  height: 100%;
-  background: url('../CrossfitKi.jpg') no-repeat center center fixed;
-  background-size: cover;
+  font-family: sans-serif;
 }
-.tabelahorario {
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.container-body {
+  padding: 0;
+  padding-top: 50px;
+}
+
+.container-children {
+  margin: auto;
+  width: 80%;
+  padding-top: 50px;
+}
+
+.container-text-teammember {
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+}
+
+.business-header {
+  height: 400px;
+  background: url('http://placehold.it/1920x400') center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+  text-shadow: 0 0 10px #000;
+  color: #fff;
+}
+
+.img-center {
+  margin: 0 auto;
+}
+
+.messenger-div {
   position: relative;
-  top: 100px;
+  width: 60%;
+  background-color: #0084FF;
+  padding: 0px;
+  color: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.messenger-span {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 10;
+  background-color: white;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.messenger-logo {
+  height: 50px;
+}
+
+.messenger-text {
+  vertical-align: middle;
+}
+
+footer {
+  margin: 50px 0;
 }
