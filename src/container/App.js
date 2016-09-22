@@ -7,9 +7,13 @@ import '../App.css';
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <NavbarComponent/>
-        {this.props.children || <Home/>}
+      <div>
+        <div className="container-nav">
+          <NavbarComponent/>
+        </div>
+        <div className="container-body">
+          {this.props.children || <Home/>}
+        </div>
       </div>
     );
   }
