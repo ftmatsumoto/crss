@@ -50,7 +50,11 @@ class Home extends Component {
           <div className="container container-header">
             <h2 className="text-header">CrossFit Ki</h2>
             <div className="text-header">
-              <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
+              <div className="row">
+                <div className="col-lg-12">
+                  <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
+                </div>
+              </div>
             </div>
           </div>
           <div className="layer">
