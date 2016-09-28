@@ -8,9 +8,10 @@ const teammember = (props) => (
     <div className="col-sm-9 container-text-teammember">
       <div className="text-teammember">
         <h2>{props.name}</h2>
-        <p>
-          {props.content}
-        </p>
+        <h3>{props.title}</h3>
+        {props.content.map((line)=>{
+          return <p>{line}</p>;
+        })}
       </div>
     </div>
   </div>

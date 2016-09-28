@@ -1,7 +1,7 @@
 import React from 'react';
 
 const pricetable = (props) => (
-  <div>
+  <div className="col-xs-3">
     <div>{props.title}</div>
     <div>{props.content}</div>
     <div>{props.price}</div>

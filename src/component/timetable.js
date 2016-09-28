@@ -16,13 +16,22 @@ const timetable = () => (
     </thead>
     <tbody>
       <tr>
+        <td>6:00</td>
+        <td>Iniciantes</td>
+        <td>CrossFit</td>
+        <td>Iniciantes</td>
+        <td>CrossFit</td>
+        <td>Iniciantes</td>
+        <td></td>
+      </tr>
+      <tr>
         <td>7:00</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
       </tr>
       <tr>
         <td>8:00</td>
@@ -31,97 +40,61 @@ const timetable = () => (
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
       </tr>
       <tr>
         <td>9:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td>CrossFit</td>
       </tr>
       <tr>
         <td>10:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
-        <td>11:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td>CrossFit</td>
       </tr>
       <tr>
-        <td>12:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td>13:00</td>
+        <td>12:30</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
       </tr>
       <tr>
-        <td>14:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
-        <td>15:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
-        <td>16:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
-        <td>17:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>18:00</td>
         <td>CrossFit</td>
+        <td>Iniciantes</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td>Iniciantes</td>
+        <td>Iniciantes</td>
+        <td></td>
       </tr>
       <tr>
         <td>19:00</td>
@@ -130,7 +103,7 @@ const timetable = () => (
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
       </tr>
       <tr>
         <td>20:00</td>
@@ -139,16 +112,7 @@ const timetable = () => (
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
-        <td>21:00</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
-        <td>CrossFit</td>
+        <td></td>
       </tr>
     </tbody>
   </Table>
