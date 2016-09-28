@@ -11,17 +11,17 @@ let prices = [
   {
     title: 'MENSAL',
     content: 'conteudo do pacote mensal',
-    priceTag: 400
+    priceTag: 360
   },
   {
     title: 'TRIMESTRAL',
     content: 'conteudo do pacote trimestral',
-    priceTag: 350
+    priceTag: 320
   },
   {
     title: 'SEMESTRAL',
     content: 'conteudo do pacote semestral',
-    priceTag: 320
+    priceTag: 300
   }
 ];
 

@@ -4,7 +4,13 @@ import NavbarComponent from '../component/navbar';
 import Home from './home';
 import '../App.css';
 
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <div>

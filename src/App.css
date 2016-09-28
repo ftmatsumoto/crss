@@ -14,7 +14,7 @@ body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2
   font-size-adjust: 0.5;
 }
 
-#page {
+p {
   font-size: 1em;
   /* equivalent to 16px */
   line-height: 1.25;
@@ -22,7 +22,7 @@ body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2
 }
 
 @media (min-width: 43.75em) {
-  #page {
+  p {
     font-size: 1em;
     /* equivalent to 16px */
     line-height: 1.375;
@@ -161,13 +161,8 @@ blockquote {
   height: 100%;
 }
 
-/*.section-title {
-  text-align: center;
-}
-*/
 .container-header {
   z-index: 1;
-  /*align-self: flex-start;*/
   text-align: center;
   height: 8em;
   width: 60%;
@@ -175,6 +170,7 @@ blockquote {
 }
 .text-header {
   color: white;
+  text-shadow: 0 0 10px #000;
 }
 
 .container-body {
@@ -189,16 +185,13 @@ blockquote {
 }
 
 .container-text-teammember {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
-  /*justify-content: center;*/
-}
-
-/* Customize the text color and shadow color and to optimize text legibility. */
-
-.tagline {
-  text-shadow: 0 0 10px #000;
-  color: #fff;
+  justify-content: center;
 }
 
 .img-home {
@@ -215,9 +208,27 @@ blockquote {
   padding: 0 10px 0 0;
 }
 
+.messenger:hover {
+  background-color: #0084FF;
+  color: white;
+  padding: 0 10px 0 0;
+}
+
 .img-messenger {
   height: 100%;
   height: 3em;
+}
+
+.row.timer {
+  margin: 10px 0 0 0;
+  border: 1px black;
+}
+
+.timer-number {
+  text-align: center;
+}
+
+.timer-text {
 
 }
 
