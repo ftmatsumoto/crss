@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Timer from '../component/timer.js';
+import { Button, Collapse, Glyphicon } from 'react-bootstrap';
 import messenger_logo from '../asset/facebook-messenger-white.svg';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deadline: new Date("Sep 29 2016 14:00:00 GMT-0200")
+      deadline: new Date("Sep 29 2016 14:00:00 GMT-0300"),
+      open: false
     };
   }
 
@@ -46,12 +48,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <header className="business-header" id="particles-js">
-          <div className="container container-header">
+        <header className="business-header">
+          <div className="container-header">
             <h2 className="text-header">CrossFit Ki</h2>
             <div className="text-header">
               <div className="row">
-                <div className="col-lg-12">
+                <div className="col-md-12">
                   <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
                 </div>
               </div>
@@ -61,18 +63,25 @@ class Home extends Component {
           </div>
         </header>
 
-        <div className="container">
+        <div className="container home">
           <hr/>
 
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-sm-12">
               <h2 className="section-title">O que é CrossFit?</h2>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <p>CrossFit é um método de treinamento desenvolvido por Greg Glassman com o objetivo de melhorar a capacidade física e a saúde dos praticantes. No CrossFit, os atletas realizam movimentos funcionais variados em alta intensidade. Muitos exercícios são baseados em movimentos utilizados em outros esportes como ginástica olímpica, levantamento olímpico, corrida, remo e outros.</p>
-              <p>Outro componente fundamental que diferencia o CrossFit é o formato das aulas. As aulas são realizadas em grupo e esse formato propicia um ambiente amigavel e estimulante para os praticantes, mesmo aqueles que não estão acostumados com o esporte. Assim, cada atleta faz o exercício de acordo com a sua capacidade física, se desafiando a cada treino. Isso fez com que uma grande comunidade surgisse em torno do esporte em um curto espaço de tempo. Hoje, existem mais de 11.000 boxes oficiais espalhados pelo mundo.</p>
+              <Button className="home-btn" onClick={ ()=> this.setState({ open: !this.state.open })}>
+                Saiba mais
+              </Button>
+              <Collapse in={this.state.open}>
+                <div>
+                  <p>Outro componente fundamental que diferencia o CrossFit é o formato das aulas. As aulas são realizadas em grupo e esse formato propicia um ambiente amigavel e estimulante para os praticantes, mesmo aqueles que não estão acostumados com o esporte. Assim, cada atleta faz o exercício de acordo com a sua capacidade física, se desafiando a cada treino. Isso fez com que uma grande comunidade surgisse em torno do esporte em um curto espaço de tempo. Hoje, existem mais de 11.000 boxes oficiais espalhados pelo mundo.</p>
+                </div>
+              </Collapse>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <div className="embed-responsive embed-responsive-16by9">
                 <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/mlVrkiCoKkg" allowFullScreen>
                 </iframe>
@@ -83,13 +92,13 @@ class Home extends Component {
           <hr/>
 
           <div className="row">
-            <div className="col-lg-6 col-lg-offset-6">
+            <div className="col-sm-6 col-sm-offset-6">
               <h2 className="section-title">CrossFit Ki</h2>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <img className="img-responsive img-home" src="http://placehold.it/350x200"/>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <p>
                 Ki é a energia vital presente em nossos corpos. Esse termo tem sua origem em países asiáticos como China, Índia e Japão.
               </p>
@@ -104,24 +113,28 @@ class Home extends Component {
 
           <hr/>
 
-          <div className="row">
-            <div className="col-lg-12">
+          <div className="row last-row">
+            <div className="col-sm-12">
               <h2 className="section-title">Treine conosco</h2>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <p>Venha fazer parte da nossa comunidade!</p>
               <address>
                 Rua Dionísio da Costa, 353<br/>
                 Klabin - São Paulo<br/>
                 tel: (011) 3280-1716<br/>
-                email: <a href="mailto:admin@crossfitki.com.br">admin@crossfitki.com.br</a>
               </address>
-              <a href="https://m.me/crossfitki" className="btn btn-default messenger">
-                <img className="img-messenger" src={messenger_logo}/>
-                <span>Envie pelo Messenger</span>
-              </a>
+              <div className="btn-block">
+                <Button className="btn btn-default" href="mailto:admin@crossfitki.com.br" block>
+                  <Glyphicon glyph="envelope" /> Envie um email
+                </Button>
+                <Button className="btn btn-default messenger" href="https://m.me/crossfitki" block>
+                  <img className="img-messenger" src={messenger_logo}/>
+                  <span>Envie pelo Messenger</span>
+                </Button>
+              </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-sm-6">
               <div>
                 <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
               </div>
@@ -132,7 +145,7 @@ class Home extends Component {
 
           <footer>
             <div className="row">
-              <div className="col-lg-12">
+              <div className="col-sm-12">
                 <p>Copyright &copy; CrossFit Ki 2016</p>
               </div>
             </div>

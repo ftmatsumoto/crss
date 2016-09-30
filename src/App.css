@@ -1,28 +1,19 @@
-/*Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-/*body {
-    padding-top: 50px;
-}
-*/
-/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 body {
-  font-size: 18px;
-  width: 100%;
-  font-family: sans-serif;
+  font-size: 16px;
+  min-height: 100%;
 }
 
-body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2, h3, h4, h5, h6 {
-  font-size-adjust: 0.5;
-}
-
-p {
+#bootstrap-overrides p, address {
   font-size: 1em;
-  /* equivalent to 16px */
-  line-height: 1.25;
-  /* equivalent to 20px */
+  min-height: 100%;
+  font-family: "Lato";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.25em;
 }
 
 @media (min-width: 43.75em) {
-  p {
+  #bootstrap-overrides p {
     font-size: 1em;
     /* equivalent to 16px */
     line-height: 1.375;
@@ -30,15 +21,15 @@ p {
   }
 }
 
-h1 {
+#bootstrap-overrides h1 {
   font-size: 2em;
-  /* 2x body copy size = 32px */
-  line-height: 1.25;
-  /* 45px / 36px */
+  line-height: 1.25em;
+  margin: 0.37em 0px 0.37em 0px;
+  font-family: "Bangers";
 }
 
 @media (min-width: 43.75em) {
-  h1 {
+  #bootstrap-overrides h1 {
     font-size: 2.5em;
     /* 2.5x body copy size = 40px */
     line-height: 1.125;
@@ -46,7 +37,7 @@ h1 {
 }
 
 @media (min-width: 56.25em) {
-  h1 {
+  #bootstrap-overrides h1 {
     font-size: 3em;
     /* 3x body copy size = 48px */
     line-height: 1.05;
@@ -54,15 +45,15 @@ h1 {
   }
 }
 
-h2 {
-  font-size: 1.625em;
-  /* 1.625x body copy size = 26px */
-  line-height: 1.15384615;
-  /* 30px / 26px */
+#bootstrap-overrides h2 {
+  font-size: 1.63em;
+  line-height: 1.15em;
+  margin: 0.5em 0px 0.5em 0px;
+  font-family: "Bangers";
 }
 
 @media (min-width: 43.75em) {
-  h2 {
+  #bootstrap-overrides h2 {
     font-size: 2em;
     /* 2x body copy size = 32px */
     line-height: 1.25;
@@ -70,22 +61,22 @@ h2 {
 }
 
 @media (min-width: 56.25em) {
-  h2 {
+  #bootstrap-overrides h2 {
     font-size: 2.25em;
     /* 2.25x body copy size = 36px */
     line-height: 1.25;
   }
 }
 
-h3 {
-  font-size: 1.375em;
-  /* 1.375x body copy size = 22px */
-  line-height: 1.13636364;
-  /* 25px / 22px */
+#bootstrap-overrides h3 {
+  font-size: 1.38em;
+  line-height: 1.14em;
+  margin: 1em 0px 1em 0px;
+  font-family: "Bangers";
 }
 
 @media (min-width: 43.75em) {
-  h3 {
+  #bootstrap-overrides h3 {
     font-size: 1.5em;
     /* 1.5x body copy size = 24px */
     line-height: 1.25;
@@ -93,27 +84,27 @@ h3 {
 }
 
 @media (min-width: 56.25em) {
-  h3 {
+  #bootstrap-overrides h3 {
     font-size: 1.75em;
     /* 1.75x body copy size = 28px */
     line-height: 1.25;
   }
 }
 
-h4 {
+#bootstrap-overrides h4 {
   font-size: 1.125em;
   /* 1.125x body copy size = 18px */
   line-height: 1.11111111;
 }
 
 @media (min-width: 43.75em) {
-  h4 {
+  #bootstrap-overrides h4 {
     line-height: 1.22222222;
     /* (22px / 18px */
   }
 }
 
-blockquote {
+#bootstrap-overrides blockquote {
   font-size: 1.25em;
   /* 20px / 16px */
   line-height: 1.25;
@@ -121,7 +112,7 @@ blockquote {
 }
 
 @media (min-width: 43.75em) {
-  blockquote {
+  #bootstrap-overrides blockquote {
     font-size: 1.5em;
     /* 24px / 16px = */
     line-height: 1.45833333;
@@ -148,6 +139,19 @@ blockquote {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn-block {
+  margin: auto;
+  display: block;
+  width: 50%;
+  min-width: 13em;
+}
+
+@media (min-width: 48em) {
+  .btn-block {
+    margin: 0;
+  }
 }
 
 .layer {
@@ -190,21 +194,14 @@ blockquote {
 .container-children {
   margin: auto;
   width: 80%;
-  padding-top: 50px;
-}
-
-.container-text-teammember {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .img-home {
   width: 100%;
+}
+
+.home {
+  width: 90%;
 }
 
 .img-center {
@@ -225,7 +222,7 @@ blockquote {
 
 .img-messenger {
   height: 100%;
-  height: 3em;
+  height: 2.5em;
 }
 
 .row.timer {
@@ -237,8 +234,113 @@ blockquote {
   text-align: center;
 }
 
-.timer-text {
+.row.last-row {
+  text-align: center;
+}
 
+@media (min-width: 48em) {
+  .row.last-row {
+    text-align: left;
+  }
+}
+
+.pricing {
+  padding: 10px 0 0 0;
+}
+
+.pricing-table {
+  border: 1px solid;
+  background-color: #2f7272;
+  margin: auto;
+  border-radius: 4px;
+  color: white;
+  max-width: 19em;
+}
+
+.pricing-table.odd:hover, .pricing-table.even:hover {
+  background-color: #41457e;
+}
+
+.pricing-table.odd {
+  background-color: #139695;
+}
+
+.pricing-rate, .pricing-freq, .pricing-title, .pricing-cta {
+  text-align: center;
+}
+
+.pricing-rate span {
+  font-size: 3em;
+}
+
+.pricing-rate sup {
+  font-size: 1.5em;
+}
+
+.pricing-freq {
+  color: #000000;
+  font-size: 1em;
+}
+
+.pricing-title {
+  color: #000000;
+  margin: 30px 0 30px 0;
+  font-size: 2em;
+}
+
+.pricing-cta {
+  padding: 30px 0 40px 0;
+}
+
+.pricing-cta a {
+  color: #000440;
+  border: 3px solid #000440;
+  padding: 15px;
+  font-family: "Bangers";
+}
+
+.pricing-cta a:hover {
+  text-decoration: none;
+  color: #41457e;
+  background-color: #000440;
+}
+
+.dropin {
+  padding: 0;
+}
+
+.team {
+  max-width: 16.25em;
+  margin: auto;
+}
+
+@media (min-width: 62em) {
+  .team {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+.teammember-container {
+  border: 1px solid black;
+  margin: 0 0 10px 0;
+}
+
+.teammember-img {
+  border: 1px solid black;
+  height: 200px;
+}
+
+.teammember-img img {
+  margin: auto;
+  height: 100%;
+  max-height: 300px;
+}
+
+.teammember-text {
+  border: 1px solid black;
+  overflow: hidden;
+  height: 200px;
 }
 
 footer {
