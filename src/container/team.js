@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Teammember from '../component/teammember.js';
-import Coach from '../container/coach.js';
+import Profile from '../container/profile.js';
 import caioImg from '../asset/caio.jpg';
 import fabioImg from '../asset/fabio.jpg';
 import felipeImg from '../asset/felipe.jpg';
@@ -57,13 +57,13 @@ class Team extends Component {
     if (!this.props.children) {
       return <div className="container-children">{team}</div>
     } else {
-      let coach = members.reduce((result, member) => {
-        if (member.link === this.props.params.coach) {
+      let profile = members.reduce((result, member) => {
+        if (member.link === this.props.params.profile) {
           result.push(member);
         }
         return result;
       },[]);
-      return <div className="container-children"><Coach name={coach[0].name} img={coach[0].img} title={coach[0].title} short={coach[0].short} long={coach[0].long}/></div>
+      return <div className="container-children"><Profile name={profile[0].name} img={profile[0].img} title={profile[0].title} short={profile[0].short} long={profile[0].long}/></div>
     }
   }
 }

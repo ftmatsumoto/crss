@@ -1,6 +1,7 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
-const Coach = (props) => (
+const Profile = (props) => (
   <div>
     <div>
       <h2>{props.name}</h2>
@@ -24,8 +25,8 @@ const Coach = (props) => (
         </div>
       </div>
     </div>
-    <h3 className="clickable" onClick={() => window.location.href="/equipe"}>Retornar para equipe</h3>
+    <h3 className="clickable" onClick={() => browserHistory.push('/equipe/' + props.link)}>Retornar para equipe</h3>
   </div>
 );
 
-export default Coach;
+export default Profile;
