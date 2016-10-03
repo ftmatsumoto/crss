@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Timer from '../component/timer.js';
 import { Button, Collapse, Glyphicon } from 'react-bootstrap';
+
 import messenger_logo from '../asset/facebook-messenger-white.svg';
+import Timer from '../component/timer.js';
+import CarouselInst from '../component/carousel.js';
 
 class Home extends Component {
   constructor(props) {
@@ -96,7 +98,7 @@ class Home extends Component {
               <h2 className="section-title">CrossFit Ki</h2>
             </div>
             <div className="col-sm-6">
-              <img className="img-responsive img-home" src="http://placehold.it/350x200"/>
+              <CarouselInst />
             </div>
             <div className="col-sm-6">
               <p>
@@ -126,7 +128,7 @@ class Home extends Component {
               </address>
               <div className="btn-block">
                 <Button className="btn btn-default" href="mailto:admin@crossfitki.com.br" block>
-                  <Glyphicon glyph="envelope" /> Envie um email
+                  <Glyphicon glyph="envelope" /> Envie por email
                 </Button>
                 <Button className="btn btn-default messenger" href="https://m.me/crossfitki" block>
                   <img className="img-messenger" src={messenger_logo}/>
