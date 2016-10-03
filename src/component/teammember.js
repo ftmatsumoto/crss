@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 
 const teammember = (props) => (
-  <div className="row teammember-container clickable" onClick={() => window.location.href="/equipe/" + props.link}>
+  <div className="row teammember-container clickable" onClick={() => browserHistory.push('/equipe/' + props.link)}>
     <div className="col-md-3 teammember-img">
       <img className="img-responsive img-circle" src={props.img}/>
     </div>
