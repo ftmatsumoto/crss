@@ -25,7 +25,7 @@ const Profile = (props) => (
         </div>
       </div>
     </div>
-    <h3 className="clickable" onClick={() => browserHistory.push('/equipe/' + props.link)}>Retornar para equipe</h3>
+    <h3 className="clickable" onClick={() => browserHistory.push('/equipe')}>Retornar para equipe</h3>
   </div>
 );
 
