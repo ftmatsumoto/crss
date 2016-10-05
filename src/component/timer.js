@@ -1,11 +1,4 @@
 import React from 'react';
-const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-const weekday = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
-
-    // <p> Estamos preparando um evento para inauguração do box. <br/>
-      // Se você tiver interesse em receber mais informações, cadastre seu email:
-    // </p>
-    // Data da inauguração: {props.deadline.getDate() + "/" + month[props.deadline.getMonth()] + "/" + props.deadline.getFullYear()}
 
 const Timer = (props) => (
   <div className="container-timer">
@@ -16,7 +9,7 @@ const Timer = (props) => (
             <h2>{("0" + props.days).slice(-2,-1)} {("0" + props.days).slice(-1)}</h2>
           </div>
           <div className="timer-text">
-            <p>dias</p>
+            <p>Dias</p>
           </div>
         </div>
       </div>
@@ -26,7 +19,7 @@ const Timer = (props) => (
             <h2>{("0" + props.hours).slice(-2,-1)} {("0" + props.hours).slice(-1)}</h2>
           </div>
           <div className="timer-text">
-            <p>horas</p>
+            <p>Horas</p>
           </div>
         </div>
       </div>
@@ -36,7 +29,7 @@ const Timer = (props) => (
             <h2>{("0" + props.mins).slice(-2,-1)} {("0" + props.mins).slice(-1)}</h2>
           </div>
           <div className="timer-text">
-            <p>minutos</p>
+            <p>Minutos</p>
           </div>
         </div>
       </div>
@@ -46,7 +39,7 @@ const Timer = (props) => (
             <h2>{("0" + props.secs).slice(-2,-1)} {("0" + props.secs).slice(-1)}</h2>
           </div>
           <div className="timer-text">
-            <p>segundos</p>
+            <p>Segundos</p>
           </div>
         </div>
       </div>

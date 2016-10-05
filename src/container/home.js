@@ -4,12 +4,16 @@ import { Button, Collapse, Glyphicon } from 'react-bootstrap';
 import messenger_logo from '../asset/facebook-messenger-white.svg';
 import Timer from '../component/timer.js';
 import CarouselInst from '../component/carousel.js';
+import EmailForm from './emailform.js';
+
+const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+const weekday = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deadline: new Date("Sep 29 2016 14:00:00 GMT-0300"),
+      deadline: new Date('Oct 29 2016 10:00:00 GMT-0300'),
       open: false
     };
   }
@@ -52,12 +56,16 @@ class Home extends Component {
       <div>
         <header className="business-header">
           <div className="container-header">
-            <h2 className="text-header">CrossFit Ki</h2>
             <div className="text-header">
               <div className="row">
                 <div className="col-md-12">
+                  <h3 style={{margin: "10px 0 0 0"}}>Faltam</h3>
                   <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
                 </div>
+              </div>
+              <h2>Inauguração no dia {this.state.deadline.getDate()} de {month[this.state.deadline.getMonth()]} ({weekday[this.state.deadline.getDay()]})!</h2>
+              <div className="allpages-form" style={{padding: "20px 0 10px 0", maxWidth: "400px", minWidth: "300px", margin:"auto", color: "black", textShadow: "0 0 0"}}>
+                <EmailForm />
               </div>
             </div>
           </div>
@@ -137,8 +145,9 @@ class Home extends Component {
               </div>
             </div>
             <div className="col-sm-6">
-              <div>
-                <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
+              <h4>Preços promocionais válidos até a data de inauguração do box!</h4>
+              <div className="allpages-form">
+                <EmailForm />
               </div>
             </div>
           </div>

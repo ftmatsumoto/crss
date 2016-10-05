@@ -35,13 +35,13 @@ const Price = () => (
         <li>Competições exclusivas para alunos</li>
         <li>Prioridade nos seminários e workshops oferecidos no box</li>
       </ul>
-      <p><i>Obs: Preços promocionais válidos para os 50 primeiros alunos que se inscreverem no site</i></p>
     </div>
     <div className="row pricing">
       {prices.map((price, id, arr) => {
         return <Pricetable key={id} id={id} individual={price.individual} length={arr.length} title={price.title} price={price.priceTag}/>
       })}
     </div>
+    <p><i><sup>*</sup>Obs: Preços promocionais válidos para os alunos que se cadastrarem antes da inauguração do box! Cadastre-se agora!</i></p>
     <hr/>
     <div>
       <h3>Taxa de matrícula</h3>

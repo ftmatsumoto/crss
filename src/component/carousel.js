@@ -10,7 +10,7 @@ const images = [img1, img2, img3, img4];
 const carouselInstance = (props) => (
   <Carousel>
     {images.map((item, id) => {
-      return <Carousel.Item><img key={id} className="carousel-img" src={item}/></Carousel.Item>
+      return <Carousel.Item key={id}><img className="carousel-img" src={item}/></Carousel.Item>
     })}
   </Carousel>
 );
