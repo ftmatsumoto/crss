@@ -28,7 +28,7 @@ let members = [
     link: 'felipe',
     name: 'Felipe Matsumoto',
     title: 'Sócio da CrossFit Ki',
-    short: [''],
+    short: ['CrossFit Level 1 Trainer'],
     long: ['Judoca apaixonado por CrossFit, Felipe começou a treinar em 2009 na CrossFit Brasil depois de um convite do Caio Rocha que havia se tornado professor naquele box.', 'No CrossFit, Felipe encontrou a melhor alternativa para manter o seu condicionamento sem ter que passar horas nas academias tradicionais, atividade que considerava entediante.', 'Outro componente no CrossFit que o atraiu foi a competição. As competições sempre estimulam o atleta a buscar melhores resultados.', 'Como judoca, Felipe foi tri-campeão Paulista, tri-campeão Brasileiro e tri-campeão Sul-Americano.']
   }
 ];
