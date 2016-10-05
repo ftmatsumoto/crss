@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(serveStatic(__dirname + '/../build'));
 
 // Constants
-const PORT = 8128;
+const PORT = process.env.PORT || 8128;
 
 app.post('/email', (req, res) => {
   // console.log(req.body);
