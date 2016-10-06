@@ -4,6 +4,12 @@
   "private": true,
   "homepage": "http://crossfitki.com.br",
   "devDependencies": {
+
+  },
+  "engines": {
+    "node": "6.1.0"
+  },
+  "dependencies": {
     "autoprefixer": "6.4.0",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
@@ -51,12 +57,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.15.1",
-    "whatwg-fetch": "1.0.0"
-  },
-  "engines": {
-    "node": "6.1.0"
-  },
-  "dependencies": {
+    "whatwg-fetch": "1.0.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
