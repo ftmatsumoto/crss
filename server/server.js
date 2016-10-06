@@ -4,7 +4,6 @@ const serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-// const db = require('./connect');
 const db = require('./helper.js');
 
 app.use(partials());
