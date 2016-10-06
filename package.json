@@ -21,9 +21,10 @@
     "webfontloader": "^1.6.26"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "dev-server": "react-scripts start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
