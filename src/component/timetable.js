@@ -52,15 +52,6 @@ const timetable = () => (
         <td>CrossFit</td>
       </tr>
       <tr>
-        <td>10:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>CrossFit</td>
-      </tr>
-      <tr>
         <td></td>
         <td></td>
         <td></td>

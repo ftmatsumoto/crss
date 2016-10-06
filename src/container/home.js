@@ -57,13 +57,13 @@ class Home extends Component {
         <header className="business-header">
           <div className="container-header">
             <div className="text-header">
-              <div className="row">
+              <div className="row" style={{visibility: "hidden"}}>
                 <div className="col-md-12">
                   <h3 style={{margin: "10px 0 0 0"}}>Faltam</h3>
                   <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
                 </div>
               </div>
-              <h2>Inauguração no dia {this.state.deadline.getDate()} de {month[this.state.deadline.getMonth()]} ({weekday[this.state.deadline.getDay()]})!</h2>
+              <h2>{/*Inauguração no dia {this.state.deadline.getDate()} de {month[this.state.deadline.getMonth()]} ({weekday[this.state.deadline.getDay()]})!*/}Estamos chegando!</h2>
               <div className="allpages-form" style={{padding: "20px 0 10px 0", maxWidth: "400px", minWidth: "300px", margin:"auto", color: "black", textShadow: "0 0 0"}}>
                 <EmailForm />
               </div>

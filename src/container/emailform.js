@@ -43,7 +43,7 @@ class FormExample extends Component {
           controlId="formBasicText"
           validationState={this.getValidationState()}
         >
-        <h4>Cadastre o seu email para receber o desconto!</h4>
+        <h4>Aula experimental grátis! Cadastre seu email!</h4>
           <div className="inputbox-form">
             <FormControl
               type="text"
