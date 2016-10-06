@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
+// let uri;
+// console.log(process.env.NODE_ENV, react_app_env.MONGODB_URI);
+// if (react_app_env.NODE_ENV === 'production') {
+//   uri = react_app_env.MONGODB_URI;
+// } else {
+//   uri = 'mongodb://localhost/crossfitki';
+// }
 
-let uri;
-console.log(react_app_env.NODE_ENV, react_app_env.MONGODB_URI);
-if (react_app_env.NODE_ENV === 'production') {
-  uri = react_app_env.MONGODB_URI;
-} else {
-  uri = 'mongodb://localhost/crossfitki';
-}
+const uri = process.env.REACT_APP_MONGODB_URI || 'mongodb://localhost/crossfitki';
+
 mongoose.connect(uri);
 const db = mongoose.connection;
 
