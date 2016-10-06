@@ -18,6 +18,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Existing head elements come first -->
+    <script type="text/javascript">
+      react_app_env = {};
+      react_app_env.NODE_ENV = '{{NODE_ENV}}';
+      react_app_env.MONGODB_URI = '{{MONGODB_URI}}';
+    </script>
 
     <title>CrossFit Ki</title>
   </head>

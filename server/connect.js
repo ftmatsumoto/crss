@@ -3,9 +3,9 @@ mongoose.Promise = require('bluebird');
 
 
 let uri;
-console.log(process.env.NODE_ENV, process.env.MONGODB_URI);
-if (process.env.NODE_ENV === 'production') {
-  uri = process.env.MONGODB_URI;
+console.log(react_app_env.NODE_ENV, react_app_env.MONGODB_URI);
+if (react_app_env.NODE_ENV === 'production') {
+  uri = react_app_env.MONGODB_URI;
 } else {
   uri = 'mongodb://localhost/crossfitki';
 }
