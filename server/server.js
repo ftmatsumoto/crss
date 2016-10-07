@@ -3,8 +3,25 @@ const partials = require('express-partials');
 const serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
 const path = require('path');
+const stormpath = require('express-stormpath');
 
 const db = require('./helper.js');
+const credential = require('./credential.js');
+
+app.use(stormpath.init(app, {
+  web: {
+    login: {enabled: true},
+    register: {enabled: true},
+    logout: {enabled: true}
+  },
+  apiKey: {
+    id: credential.stormpath.id,
+    secret: credential.stormpath.secret
+  },
+  application: {
+    href: credential.stormpath.href
+  }
+}));
 
 app.use(partials());
 app.use(bodyParser.json());
@@ -24,7 +41,9 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-const server = app.listen(PORT, () => {
-  console.log('Running on http://localhost:' + PORT);
+app.on('stormpath.ready', () => {
+  const server = app.listen(PORT, () => {
+    console.log('Running on http://localhost:' + PORT);
+  });
 });
 
