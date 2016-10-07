@@ -132,7 +132,11 @@ class Home extends Component {
               <address>
                 Rua Dionísio da Costa, 353<br/>
                 Klabin - São Paulo<br/>
-                tel: (011) 3280-1716<br/>
+                Telefone:<br/>
+                Fixo: (011) 3280-1716<br/>
+                Caio: (011) 99588-4213<br/>
+                Fabio: (011) 99194-1312<br/>
+                Felipe: (011) 97608-6655<br/>
               </address>
               <div className="btn-block">
                 <Button className="btn btn-default" href="mailto:admin@crossfitki.com.br" block>

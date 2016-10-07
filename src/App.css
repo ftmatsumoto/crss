@@ -332,6 +332,7 @@ body {
 }
 
 .pricing-cta a:hover {
+  cursor: pointer;
   text-decoration: none;
   color: #41457e;
   background-color: #000440;

@@ -47,7 +47,7 @@ const Price = () => (
       <h3>Taxa de matrícula</h3>
       <p>Essa taxa se aplica aos <strong>alunos que nunca praticaram CrossFit</strong>.</p>
       <p>O valor da taxa é de R$ 150,00.</p>
-      <p>O aluno terá o direito de fazer 5 <i>aulas iniciais<sup>*</sup></i> nas quais, os professores têm como objetivo principal ensinar os movimentos fundamentais para a prática do CrossFit. Sem esses fundamentos, o aluno iniciante não poderá participar das aulas regulares.</p>
+      <p>O aluno terá o direito de fazer 3 <i>aulas fundamentais<sup>*</sup></i> nas quais, os professores ensinam os principais movimentos para a prática do CrossFit. Sem esses fundamentos, o aluno iniciante não poderá participar das aulas regulares.</p>
     </div>
     <hr/>
     <div>

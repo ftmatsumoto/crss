@@ -1,5 +1,7 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
+/*onClick={() => browserHistory.push('/registration')}*/
 const pricetable = (props) => (
   <div className={"col-sm-" + 12/props.length + " pricing-table " + (props.id % 2 === 0 ? "even" : "odd")}>
     <div className="pricing-header">

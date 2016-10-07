@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import { Authenticated, NotAuthenticated, LogoutLink, LoginLink } from 'react-stormpath';
+
 const navbarComponent = () => (
   <Navbar fixedTop>
     <Navbar.Header>
@@ -23,9 +25,21 @@ const navbarComponent = () => (
           <NavItem eventKey={3}>Equipe</NavItem>
         </LinkContainer>
       </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">Login</NavItem>
-      </Nav>
+      {/*<Nav pullRight>
+              <Authenticated>
+                <LogoutLink>Logout</LogoutLink>
+              </Authenticated>
+              <NotAuthenticated>
+                <a href="/login">Login</a>
+                <LoginLink>Login</LoginLink>
+              </NotAuthenticated>
+              <NotAuthenticated>
+                <a href="/register">Register</a>
+                <LinkContainer to="/registration">
+                            <NavItem eventKey={2}>Register</NavItem>
+                          </LinkContainer>
+              </NotAuthenticated>
+            </Nav>*/}
     </Navbar.Collapse>
   </Navbar>
 );
