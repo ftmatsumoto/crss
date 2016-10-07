@@ -6,7 +6,19 @@ const path = require('path');
 const stormpath = require('express-stormpath');
 
 const db = require('./helper.js');
-const credential = require('./credential.js');
+let credential;
+
+if (process.env.STORMPATH_CLIENT_APIKEY_ID) {
+  credential = {
+    stormpath: {
+      id: process.env.STORMPATH_CLIENT_APIKEY_ID,
+      secret: process.env.STORMPATH_CLIENT_APIKEY_SECRET,
+      href: process.env.STORMPATH_APPLICATION_HREF
+    }
+  };
+} else {
+  credential = require('./credential.js');
+}
 
 app.use(stormpath.init(app, {
   web: {
