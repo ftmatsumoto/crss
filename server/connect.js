@@ -9,7 +9,7 @@ mongoose.Promise = require('bluebird');
 //   uri = 'mongodb://localhost/crossfitki';
 // }
 
-const uri = process.env.REACT_APP_MONGODB_URI || 'mongodb://localhost/crossfitki';
+const uri = process.env.MONGODB_URI || 'mongodb://localhost/crossfitki';
 
 mongoose.connect(uri);
 const db = mongoose.connection;
