@@ -8,12 +8,7 @@ import Team from './container/team';
 import Coach from './container/coach';
 import Schedule from './container/schedule';
 import Price from './container/price';
-import RegistrationPage from './container/registration';
-import LoginPage from './container/login';
 import ProfilePage from './container/profile';
-
-{/*<Route path="/registration" component={RegistrationPage}/>
-    <LoginRoute path='/login' component={LoginPage} />*/}
 
 export default (
   <Route path="/" component={App}>
