@@ -14,14 +14,13 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    // console.log(this.context);
     let xhr = new XMLHttpRequest();
     let context = this;
     xhr.open('GET', '/initialdata', true);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     xhr.onreadystatechange = () => {
       if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        console.log(xhr, xhr.responseText);
+        // console.log(xhr, xhr.responseText);
         let obj = JSON.parse(xhr.responseText);
         context.setState({
           firstName: obj.firstName,
