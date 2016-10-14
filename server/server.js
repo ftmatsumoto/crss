@@ -92,10 +92,6 @@ app.post('/email', (req, res) => {
 // });
 
 app.get('/initialdata', stormpath.loginRequired, (req, res) => {
-  req.user.getGroups({name: 'admin'}, (err, groups) => {
-    console.log(groups);
-  });
-  console.log(req.user.groups);
   db.user.getUser(req.user.email)
     .then((user) => {
       if (user.length === 0) {
@@ -107,6 +103,30 @@ app.get('/initialdata', stormpath.loginRequired, (req, res) => {
     .then((user) => {
       res.status(200).json(user);
       res.end();
+    });
+});
+
+app.get('/getexercises', stormpath.loginRequired, (req, res) => {
+  db.movement.getAllMovements()
+    .then((movements) => {
+      res.status(200).json(movements);
+      res.end();
+    });
+});
+
+app.get('/getclasses', stormpath.loginRequired, (req, res) => {
+  db.lesson.getLessonByDate(Number(req.query.q))
+    .then((lessons) => {
+      res.status(200).json(lessons);
+      res.end();
+    });
+});
+
+app.post('/toggleclass', stormpath.loginRequired, (req, res) => {
+  db.user.getUser(req.body.email)
+    .then((userArr) => {
+      let user = userArr[0];
+      db.lesson.addUserToLesson(req.body.id, user.id);
     });
 });
 
@@ -129,7 +149,6 @@ app.get('*', (req, res) => {
 app.on('stormpath.ready', () => {
   const server = app.listen(PORT, () => {
     console.log('Running on http://localhost:' + PORT);
-    // db.email.findAllEmail();
   });
 });
 

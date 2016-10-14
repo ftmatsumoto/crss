@@ -10,8 +10,15 @@ module.exports = {
   },
   user: {
     addUser: addUser,
-    updateUser: updateUser,
-    getUser: getUser
+    getUser: getUser,
+    updateUser: updateUser
+  },
+  lesson: {
+    addUserToLesson: addUserToLesson,
+    createLesson: createLesson,
+    getLessonByDate: getLessonByDate,
+    getLessonById: getLessonById,
+    modifyLesson: modifyLesson
   },
   movement: {
     addMovement: addMovement,
@@ -20,8 +27,9 @@ module.exports = {
   },
   wod: {
     createWod: createWod,
-    findWodByName: findWodByName,
-    findWodByExercise: findWodByExercise
+    findWodByCreator: findWodByCreator,
+    findWodByExercise: findWodByExercise,
+    findWodByName: findWodByName
   }
 };
 
@@ -69,43 +77,100 @@ function updateUser(email, firstName, lastName, address) {
       oldUser.firstName = firstName;
       oldUser.lastName = lastName;
       oldUser.address = address;
-      oldUser.save((err, updatedUser) => {
-        return updatedUser;
-      });
+      return oldUser.save();
+    })
+    .then((err, updatedUser) => {
+      return updatedUser;
     });
 }
 
-function addMovement(name) {
+function createLesson(obj) {
+  let newLesson = new model.lesson({
+    _id: new mongoose.Types.ObjectId,
+    schedule: new Date(obj.schedule), // new Date('Oct 29 2016 10:00:00 GMT-0300'),
+    coach: obj.coach,
+    wod: obj.wod
+  });
+  return newLesson.save()
+    .then((err, lesson) => {
+      return lesson;
+    });
+}
+
+function getLessonByDate(schedule) { // pass initial date value (beginning of the day)
+  // console.log(new Date(schedule), new Date(schedule + 1000 * 60 * 60 * 24));
+  return model.lesson.find({"schedule": {"$gte": new Date(schedule), "$lt": new Date(schedule + 1000 * 60 * 60 * 24)}})
+    .then((lesson) => {
+      return lesson;
+    });
+}
+
+function getLessonById(id) { // pass initial date value (beginning of the day)
+  // console.log(new Date(schedule), new Date(schedule + 1000 * 60 * 60 * 24));
+  return model.lesson.find({_id: id})
+    .then((lesson) => {
+      return lesson;
+    });
+}
+
+function modifyLesson(obj) {
+  return getLessonByDate(obj.schedule)
+    .then((lessonArr) => {
+      let lesson = lessonArr[0];
+      lesson.schedule = obj.schedule;
+      lesson.coach = obj.coach;
+      lesson.wod = obj.wod;
+      return lesson.save();
+    })
+    .then((err, updatedLesson) => {
+      return updatedLesson;
+    });
+}
+
+function addUserToLesson(id, user) {
+  return getLessonById(id)
+    .then((lessonArr) => {
+      let lesson = lessonArr[0];
+      lesson.client.push(user);
+      return lesson.save();
+    });
+}
+
+function addMovement(name, modality) {
   let newMovement = new model.movement({
     _id: new mongoose.Types.ObjectId,
-    name: name
+    name: name,
+    modality: modality
   });
-  newMovement.save()
+  return newMovement.save()
     .then((movement) => {
       console.log(movement);
     });
 }
 
 function getAllMovements() {
-  model.movement.find()
+  return model.movement.find()
     .then((movement) => {
-      console.log(movement);
+      return movement;
     });
 }
 
 function getMovement(name) {
-  model.movement.find({name: name})
+  return model.movement.find({name: name})
     .then((movement) => {
-      console.log(movement);
+      return movement;
     });
 }
 
-function createWod(exerciseArray, name) {
+function createWod(name, benchmark, typed, exerciseArray, total, creator) {
   let wodName = name || '';
   let newWod = new model.wod({
     _id: new mongoose.Types.ObjectId,
+    name: wodName,
+    typed: typed,
     wod: exerciseArray,
-    name: wodName
+    totalduration: total,
+    created_by: creator
   });
   newWod.save()
     .then((wod) => {
@@ -127,11 +192,146 @@ function findWodByExercise(exercise) {
   });
 }
 
-// addEmail("felipe3@felipe.com.br");
-// findAllEmail();
-// addUser('felipetmatsumoto@yahoo.com.br');
-// addMovement('Pull-up');
-// getMovement('Thruster');
-// getAllMovements();
-// updateUser('felipetmatsumoto@yahoo.com.br', 'felipe', 'matsumoto');
-// getUser('felipetmatsumoto@yahoo.com.br');
+function findWodByCreator(creator) {
+  model.wod.find({created_by: creator})
+  .then((wod) => {
+    console.log(wod);
+  });
+}
+
+// getLessonByDate(1476414000000);
+
+// findWodByCreator('57fbf38b89e51f2562f49252');
+// findWodByExercise('57ff88e9a86bb750fb4a3745');
+
+// let a = [
+//   {
+//     name: 'Kettlebell Swing',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Air Squat',
+//     modality: 'gymnastic'
+//   },
+//   {
+//     name: 'Front Squat',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Overhead Squat',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Shoulder Press',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Push Press',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Deadlift',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Medicine-Ball Clean',
+//     modality: 'gymnastic'
+//   },
+//   {
+//     name: 'Sumo Deadlift High Pull',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Thruster',
+//     modality: 'weightlifting'
+//   },
+//   {
+//     name: 'Wall Ball',
+//     modality: 'gymnastic'
+//   },
+//   {
+//     name: 'Pull up',
+//     modality: 'gymnastic'
+//   }
+// ];
+
+// let a = [
+//   {
+//     name: 'Push up',
+//     modality: 'gymnastic'
+//   },
+//   {
+//     name: 'Sit up',
+//     modality: 'gymnastic'
+//   }
+// ];
+
+// a.map((item) => {
+//   addMovement(item.name, item.modality);
+// });
+
+// ---------------------------------------------
+
+// let a = [
+//   {
+//     name: 'Angie',
+//     typed: 'For time',
+//     created_by: '57fbf38b89e51f2562f49252',
+//     wod: [
+//       {
+//         exercise: '57ff88e9a86bb750fb4a374f',
+//         reps: 100,
+//         weight: 0,
+//         unit: 'kg'
+//       },
+//       {
+//         exercise: '57ffdcd35d913858dd3e4629',
+//         reps: 100,
+//         weight: 0,
+//         unit: 'kg'
+//       },
+//       {
+//         exercise: '57ffdcd35d913858dd3e462a',
+//         reps: 100,
+//         weight: 0,
+//         unit: 'kg'
+//       },
+//       {
+//         exercise: '57ff88e9a86bb750fb4a3745',
+//         reps: 100,
+//         weight: 0,
+//         unit: 'kg'
+//       }
+//     ]
+//   }
+// ];
+
+// a.map((item) => {
+//   createWod(item.name, true, item.typed, item.wod, 0, item.created_by);
+// });
+
+// ---------------------------------------------------
+
+// let a = [
+//   {
+//     schedule: 'Oct 14 2016 9:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   },
+//   {
+//     schedule: 'Oct 14 2016 10:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   },
+//   {
+//     schedule: 'Oct 14 2016 11:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   }
+// ];
+
+// a.map((item) => {
+//   createLesson(item);
+// });
+
+
