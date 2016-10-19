@@ -7,8 +7,9 @@ const sidebar = (props) => (
     <ul>
       <li><a onClick={() => browserHistory.push('/profile')}>profile</a></li>
       <li><a onClick={() => browserHistory.push('/wod')}>wod</a></li>
+      <li><a onClick={() => browserHistory.push('/result')}>resultados</a></li>
       <li><a onClick={() => browserHistory.push('/chat')}>chat</a></li>
-      <li><a onClick={() => browserHistory.push('/pagamento')}>payment</a></li>
+      <li><a onClick={() => browserHistory.push('/payment')}>pagamento</a></li>
       <li><a onClick={() => browserHistory.push('/checkin')}>checkin</a></li>
     </ul>
   </div>

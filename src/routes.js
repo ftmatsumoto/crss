@@ -10,6 +10,7 @@ import Home from './container/home';
 import Payment from './container/payment';
 import Price from './container/price';
 import ProfilePage from './container/profile';
+import ResultPage from './container/result';
 import Schedule from './container/schedule';
 import Team from './container/team';
 import Wod from './container/wod';
@@ -27,8 +28,9 @@ export default (
       <HomeRoute path='/profile' component={ProfilePage} />
       <Route path="/chat" component={Chat}/>
       <Route path="/checkin" component={Checkin}/>
-      <Route path="/pagamento" component={Payment}/>
+      <Route path="/payment" component={Payment}/>
       <Route path="/wod" component={Wod}/>
+      <Route path="/result" component={ResultPage}/>
     </AuthenticatedRoute>
   </Route>
 );
