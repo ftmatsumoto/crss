@@ -6,19 +6,24 @@ const model = require('./model.js');
 module.exports = {
   email: {
     addEmail: addEmail,
-    findAllEmail: findAllEmails
+    getAllEmail: getAllEmails
   },
   user: {
     addUser: addUser,
-    getUser: getUser,
+    addResultToUser: addResultToUser,
+    getAllUsers: getAllUsers,
+    getUserByEmail: getUserByEmail,
+    removeResultFromUser: removeResultFromUser,
     updateUser: updateUser
   },
   lesson: {
     addUserToLesson: addUserToLesson,
     createLesson: createLesson,
+    getCheckedLessons: getCheckedLessons,
     getLessonByDate: getLessonByDate,
     getLessonById: getLessonById,
-    modifyLesson: modifyLesson
+    modifyLesson: modifyLesson,
+    removeUserFromLesson: removeUserFromLesson
   },
   movement: {
     addMovement: addMovement,
@@ -27,9 +32,10 @@ module.exports = {
   },
   wod: {
     createWod: createWod,
-    findWodByCreator: findWodByCreator,
-    findWodByExercise: findWodByExercise,
-    findWodByName: findWodByName
+    getWodByCreator: getWodByCreator,
+    getWodByExercise: getWodByExercise,
+    getWodById: getWodById,
+    getWodByName: getWodByName
   }
 };
 
@@ -44,8 +50,8 @@ function addEmail(email) {
     });
 }
 
-function findAllEmails() {
-  model.email.find((err, emails)=>{
+function getAllEmails() {
+  model.email.find((err, emails) => {
     console.log(emails);
   });
 }
@@ -63,15 +69,48 @@ function addUser(email, firstName, lastName) {
     });
 }
 
-function getUser(email) {
-  return model.user.find({email: email})
-    .then((user) => {
-      return user;
-    });
+function addResultToUser(userId, wod, classId, schedule) {
+  return model.user.update(
+    {
+      _id: userId
+    },
+    {
+      $addToSet: {
+        result: {
+          wod: wod,
+          lesson: classId,
+          rx: true,
+          total: 0,
+          executed_at: schedule
+        }
+      }
+    }
+  );
+}
+
+function removeResultFromUser(userId, classId) {
+  return model.user.update(
+    {
+      _id: userId
+    },
+    {
+      $pull: {
+        result: {lesson: classId}
+      }
+    }
+  );
+}
+
+function getAllUsers() {
+  return model.user.find();
+}
+
+function getUserByEmail(email) {
+  return model.user.find({email: email});
 }
 
 function updateUser(email, firstName, lastName, address) {
-  return getUser(email)
+  return getUserByEmail(email)
     .then((user) => {
       let oldUser = user[0];
       oldUser.firstName = firstName;
@@ -98,19 +137,19 @@ function createLesson(obj) {
 }
 
 function getLessonByDate(schedule) { // pass initial date value (beginning of the day)
-  // console.log(new Date(schedule), new Date(schedule + 1000 * 60 * 60 * 24));
-  return model.lesson.find({"schedule": {"$gte": new Date(schedule), "$lt": new Date(schedule + 1000 * 60 * 60 * 24)}})
-    .then((lesson) => {
-      return lesson;
-    });
+  return model.lesson.find(
+    {"schedule": {"$gte": new Date(schedule), "$lt": new Date(schedule + 1000 * 60 * 60 * 24)}}
+  );
 }
 
-function getLessonById(id) { // pass initial date value (beginning of the day)
-  // console.log(new Date(schedule), new Date(schedule + 1000 * 60 * 60 * 24));
-  return model.lesson.find({_id: id})
-    .then((lesson) => {
-      return lesson;
-    });
+function getCheckedLessons(clientId, schedule) {
+  return model.lesson.find(
+    { client: clientId, "schedule": {"$gte": new Date(schedule), "$lt": new Date(schedule + 1000 * 60 * 60 * 24)}}
+  );
+}
+
+function getLessonById(lessonId) {
+  return model.lesson.find({_id: lessonId});
 }
 
 function modifyLesson(obj) {
@@ -127,13 +166,12 @@ function modifyLesson(obj) {
     });
 }
 
-function addUserToLesson(id, user) {
-  return getLessonById(id)
-    .then((lessonArr) => {
-      let lesson = lessonArr[0];
-      lesson.client.push(user);
-      return lesson.save();
-    });
+function addUserToLesson(classId, userId) {
+  return model.lesson.update({ _id: classId }, { $addToSet: {client: userId} });
+}
+
+function removeUserFromLesson(classId, userId) {
+  return model.lesson.update({ _id: classId }, { $pull: {client: userId} });
 }
 
 function addMovement(name, modality) {
@@ -144,7 +182,7 @@ function addMovement(name, modality) {
   });
   return newMovement.save()
     .then((movement) => {
-      console.log(movement);
+      return movement;
     });
 }
 
@@ -172,31 +210,23 @@ function createWod(name, benchmark, typed, exerciseArray, total, creator) {
     totalduration: total,
     created_by: creator
   });
-  newWod.save()
-    .then((wod) => {
-      console.log(wod);
-    });
+  return newWod.save();
 }
 
-function findWodByName(name) {
-  model.wod.find({name: name})
-    .then((wod) => {
-      console.log(wod);
-    });
+function getWodById(wodId) {
+  return model.wod.find({_id: wodId});
 }
 
-function findWodByExercise(exercise) {
-  model.wod.find({"wod.exercise": exercise})
-  .then((wod) => {
-    console.log(wod);
-  });
+function getWodByName(name) {
+  return model.wod.find({name: name});
 }
 
-function findWodByCreator(creator) {
-  model.wod.find({created_by: creator})
-  .then((wod) => {
-    console.log(wod);
-  });
+function getWodByExercise(exercise) {
+  return model.wod.find({"wod.exercise": exercise});
+}
+
+function getWodByCreator(creator) {
+  return model.wod.find({created_by: creator});
 }
 
 // getLessonByDate(1476414000000);
@@ -314,17 +344,32 @@ function findWodByCreator(creator) {
 
 // let a = [
 //   {
-//     schedule: 'Oct 14 2016 9:00:00 GMT-0300',
+//     schedule: 'Oct 15 2016 12:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
 //     wod: '57ffdd2312e31058fe8699d1'
 //   },
 //   {
-//     schedule: 'Oct 14 2016 10:00:00 GMT-0300',
+//     schedule: 'Oct 15 2016 13:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
 //     wod: '57ffdd2312e31058fe8699d1'
 //   },
 //   {
-//     schedule: 'Oct 14 2016 11:00:00 GMT-0300',
+//     schedule: 'Oct 15 2016 14:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   },
+//   {
+//     schedule: 'Oct 16 2016 9:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   },
+//   {
+//     schedule: 'Oct 16 2016 10:00:00 GMT-0300',
+//     coach: '57fbf38b89e51f2562f49252',
+//     wod: '57ffdd2312e31058fe8699d1'
+//   },
+//   {
+//     schedule: 'Oct 16 2016 11:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
 //     wod: '57ffdd2312e31058fe8699d1'
 //   }

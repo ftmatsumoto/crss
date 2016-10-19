@@ -86,13 +86,8 @@ app.post('/email', (req, res) => {
   res.end();
 });
 
-// app.get('/me', stormpath.loginRequired, (req, res) => {
-//   res.status(201).json(req.body);
-//   res.end();
-// });
-
-app.get('/initialdata', stormpath.loginRequired, (req, res) => {
-  db.user.getUser(req.user.email)
+app.get('/userprofile', stormpath.loginRequired, (req, res) => {
+  db.user.getUserByEmail(req.user.email)
     .then((user) => {
       if (user.length === 0) {
         return db.user.addUser(req.user.email, req.user.givenName, req.user.surname);
@@ -106,7 +101,20 @@ app.get('/initialdata', stormpath.loginRequired, (req, res) => {
     });
 });
 
-app.get('/getexercises', stormpath.loginRequired, (req, res) => {
+app.put('/userprofile', stormpath.loginRequired, (req, res) => {
+  req.user.givenName = req.body.name;
+  req.user.save()
+    .then((err) => {
+      if (err) {
+        res.status(400).end('Oops! There was an error: ' + err.userMessage);
+      } else {
+        res.status(201).json(req.user);
+        res.end();
+      }
+    });
+});
+
+app.get('/exercises', stormpath.loginRequired, (req, res) => {
   db.movement.getAllMovements()
     .then((movements) => {
       res.status(200).json(movements);
@@ -114,32 +122,78 @@ app.get('/getexercises', stormpath.loginRequired, (req, res) => {
     });
 });
 
-app.get('/getclasses', stormpath.loginRequired, (req, res) => {
+app.get('/classes', stormpath.loginRequired, (req, res) => {
+  let result = {};
   db.lesson.getLessonByDate(Number(req.query.q))
-    .then((lessons) => {
-      res.status(200).json(lessons);
+    .then((lesson) => {
+      result.allLessons = lesson;
+      return db.user.getUserByEmail(req.query.email);
+    })
+    .then((userId) => {
+      return db.lesson.getCheckedLessons(userId[0]._id, Number(req.query.q));
+    })
+    .then((checked) => {
+      result.checkedLessons = checked;
+      res.status(200).json(result);
       res.end();
     });
 });
 
-app.post('/toggleclass', stormpath.loginRequired, (req, res) => {
-  db.user.getUser(req.body.email)
+app.get('/results', stormpath.loginRequired, (req, res) => {
+  let result = {};
+  db.lesson.getLessonByDate(Number(req.query.q))
+    .then((lesson) => {
+      result.allLessons = lesson;
+      return db.user.getUserByEmail(req.query.email);
+    })
+    .then((userId) => {
+      return db.lesson.getCheckedLessons(userId[0]._id, Number(req.query.q));
+    })
+    .then((checked) => {
+      result.checkedLessons = checked;
+      res.status(200).json(result);
+      res.end();
+    });
+});
+
+app.put('/checkin', stormpath.loginRequired, (req, res) => {
+  let userId, schedule;
+  let result = {};
+  db.user.getUserByEmail(req.body.email)
     .then((userArr) => {
-      let user = userArr[0];
-      db.lesson.addUserToLesson(req.body.id, user.id);
-    });
-});
-
-app.put('/update', stormpath.loginRequired, (req, res) => {
-  req.user.givenName = req.body.name;
-  req.user.save((err) => {
-    if (err) {
-      res.status(400).end('Oops!  There was an error: ' + err.userMessage);
-    } else {
-      res.status(201).json(req.user);
+      userId = userArr[0].id;
+      return req.body.checked ? db.lesson.removeUserFromLesson(req.body.classId, userId) : db.lesson.addUserToLesson(req.body.classId, userId);
+    })
+    .then(() => {
+      if (req.body.otherclass.length !== 0) {
+        return db.lesson.removeUserFromLesson(req.body.otherclass[0], userId);
+      } else {
+        return;
+      }
+    })
+    .then(() => {
+      return db.lesson.getLessonById(req.body.classId);
+    })
+    .then((lessonArr) => {
+      let lesson = lessonArr[0];
+      schedule = lesson.schedule;
+      return db.wod.getWodById(lesson.wod);
+    })
+    .then((wod) => {
+      return req.body.checked ? db.user.removeResultFromUser(userId, req.body.classId) : db.user.addResultToUser(userId, wod[0], req.body.classId, schedule);
+    })
+    .then(() => {
+      return db.lesson.getCheckedLessons(userId, req.body.t);
+    })
+    .then((checked) => {
+      result.checked = checked;
+      return db.lesson.getLessonByDate(req.body.t);
+    })
+    .then((lesson) => {
+      result.lesson = lesson;
+      res.status(200).json(result);
       res.end();
-    }
-  });
+    });
 });
 
 app.get('*', (req, res) => {
