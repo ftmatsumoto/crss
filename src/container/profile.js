@@ -14,14 +14,14 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    let xhr = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     let context = this;
-    xhr.open('GET', '/initialdata', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.onreadystatechange = () => {
-      if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        // console.log(xhr, xhr.responseText);
-        let obj = JSON.parse(xhr.responseText);
+    request.open('GET', '/userprofile', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = () => {
+      if(request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+        // console.log(request, request.responseText);
+        let obj = JSON.parse(request.responseText);
         context.setState({
           firstName: obj.firstName,
           lastName: obj.lastName,
@@ -30,16 +30,16 @@ class Profile extends Component {
         });
       }
     };
-    xhr.send();
+    request.send();
   }
 
   update(e) {
     e.preventDefault();
-    let xhr = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     let data = JSON.stringify({name: "Felipe2"});
-    xhr.open('PUT', '/update', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.send(data);
+    request.open('PUT', '/userprofile', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.send(data);
   }
 
   render() {

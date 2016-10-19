@@ -19,19 +19,19 @@ class Wod extends Component {
   }
 
   componentWillMount() {
-    let xhr = new XMLHttpRequest();
+    let request = new XMLHttpRequest();
     let context = this;
-    xhr.open('GET', '/getexercises', true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        let responseObj = JSON.parse(xhr.responseText);
+    request.open('GET', '/exercises', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = () => {
+      if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+        let responseObj = JSON.parse(request.responseText);
         context.setState({
           exerciseObjArray: responseObj
         });
       }
     };
-    xhr.send();
+    request.send();
   }
 
   handleChange(event, index, value) {
