@@ -32,7 +32,7 @@ let wodSchema = new mongoose.Schema({
     modality: { type: String, default: 'other' }, // gymnastic, weightlifting, monostructural
     category: { type: String, default: 'other' } // open, girls, heroes, tournament x, y or z...
   }],
-  wod: [{
+  exercise_set: [{
     exercise: { type: mongoose.Schema.Types.ObjectId, ref:'Exercise' },
     reps: Number,
     weight: Number,

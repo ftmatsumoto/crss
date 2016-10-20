@@ -140,18 +140,10 @@ app.get('/classes', stormpath.loginRequired, (req, res) => {
 });
 
 app.get('/results', stormpath.loginRequired, (req, res) => {
-  let result = {};
-  db.lesson.getLessonByDate(Number(req.query.q))
-    .then((lesson) => {
-      result.allLessons = lesson;
-      return db.user.getUserByEmail(req.query.email);
-    })
-    .then((userId) => {
-      return db.lesson.getCheckedLessons(userId[0]._id, Number(req.query.q));
-    })
-    .then((checked) => {
-      result.checkedLessons = checked;
-      res.status(200).json(result);
+  db.user.getUserByEmail(req.query.email)
+    .then((userArr) => {
+      let user = userArr[0];
+      res.status(200).json(user);
       res.end();
     });
 });
@@ -166,9 +158,12 @@ app.put('/checkin', stormpath.loginRequired, (req, res) => {
     })
     .then(() => {
       if (req.body.otherclass.length !== 0) {
-        return db.lesson.removeUserFromLesson(req.body.otherclass[0], userId);
-      } else {
-        return;
+        return db.user.removeResultFromUser(userId, req.body.otherclass[0]._id);
+      }
+    })
+    .then(() => {
+      if (req.body.otherclass.length !== 0) {
+        return db.lesson.removeUserFromLesson(req.body.otherclass[0]._id, userId);
       }
     })
     .then(() => {

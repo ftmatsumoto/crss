@@ -307,7 +307,7 @@ function getWodByCreator(creator) {
 //     name: 'Angie',
 //     typed: 'For time',
 //     created_by: '57fbf38b89e51f2562f49252',
-//     wod: [
+//     exercise_set: [
 //       {
 //         exercise: '57ff88e9a86bb750fb4a374f',
 //         reps: 100,
