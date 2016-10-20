@@ -10,11 +10,20 @@ import ReactStormpath, { Router } from 'react-stormpath';
 import Routes from './routes';
 import './index.css';
 
+import ReactGA from 'react-ga';
+
 injectTapEventPlugin();
+
+ReactGA.initialize('UA-86048339-1');
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 const App = () => (
   <MuiThemeProvider>
-    <Router history={browserHistory}>{Routes}</Router>
+    <Router history={browserHistory} onUpdate={logPageView}>{Routes}</Router>
   </MuiThemeProvider>
 );
 
