@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ResultCard from '../component/resultcard';
 
 class ResultPage extends Component {
   static contextTypes = {
@@ -22,7 +23,7 @@ class ResultPage extends Component {
       if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
         let responseObj = JSON.parse(request.responseText);
         currContext.setState({
-          results: this.state.lesson.concat(responseObj.results)
+          results: this.state.results.concat(responseObj.result)
         });
       }
     };
@@ -32,9 +33,9 @@ class ResultPage extends Component {
   render() {
     return (
       <div>
-        <ul>
-
-        </ul>
+        {this.state.results.map((result, index) => {
+          return <ResultCard id={index} key={index} result={result}/>
+        })}
       </div>
     );
   }
