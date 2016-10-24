@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Authenticated } from 'react-stormpath';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import UsersDialog from './userdialog';
 
-/*
- * Dialog with action buttons. The actions are passed in as an array of React objects,
- * in this example [FlatButtons](/#/components/flat-button).
- *
- * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
- */
+import { ListItem } from 'material-ui/List';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+
 class ClassesDialog extends Component {
   static contextTypes = {
     authenticated: React.PropTypes.bool,
@@ -24,10 +21,12 @@ class ClassesDialog extends Component {
   }
 
   handleOpen() {
+    this.props.openDialog(this.props.classId);
     this.setState({open: true});
   }
 
   handleClose() {
+    this.props.closeDialog();
     this.setState({open: false});
   }
 
@@ -51,10 +50,10 @@ class ClassesDialog extends Component {
 
     return (
       <div>
-        <li onClick={this.handleOpen.bind(this)}>
+        <ListItem onClick={this.handleOpen.bind(this)} rightIcon={<ActionInfo />}>
           {this.props.schedule}
           {this.props.isUserChecked ? ' checked' : ''}
-        </li>
+        </ListItem>
         <Dialog
           title="Alunos confirmados"
           actions={actions}
@@ -65,7 +64,7 @@ class ClassesDialog extends Component {
         >
           <ul>
           {this.props.clients.map((user) => {
-            return <li>{user}</li>
+            return <li>{`${user.firstName} ${user.lastName}`}</li>
           })}
           </ul>
         </Dialog>
