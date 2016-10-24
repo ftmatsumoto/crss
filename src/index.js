@@ -14,7 +14,9 @@ import ReactGA from 'react-ga';
 
 injectTapEventPlugin();
 
-ReactGA.initialize('UA-86048339-1');
+ReactGA.initialize('UA-86048339-1', {
+  debug: true
+});
 
 function logPageView() {
   ReactGA.set({ page: window.location.pathname });
