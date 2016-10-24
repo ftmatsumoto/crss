@@ -12,18 +12,17 @@ module.exports = {
     addUser: addUser,
     addResultToUser: addResultToUser,
     getAllUsers: getAllUsers,
+    getCheckedLessons: getCheckedLessons,
+    getCheckedUsers: getCheckedUsers,
     getUserByEmail: getUserByEmail,
     removeResultFromUser: removeResultFromUser,
     updateUser: updateUser
   },
   lesson: {
-    addUserToLesson: addUserToLesson,
     createLesson: createLesson,
-    getCheckedLessons: getCheckedLessons,
     getLessonByDate: getLessonByDate,
     getLessonById: getLessonById,
-    modifyLesson: modifyLesson,
-    removeUserFromLesson: removeUserFromLesson
+    modifyLesson: modifyLesson
   },
   movement: {
     addMovement: addMovement,
@@ -85,7 +84,10 @@ function addResultToUser(userId, wod, classId, schedule) {
         }
       }
     }
-  );
+  )
+  .then(() => {
+    return model.user.find({_id: userId});
+  });
 }
 
 function removeResultFromUser(userId, classId) {
@@ -98,7 +100,10 @@ function removeResultFromUser(userId, classId) {
         result: {lesson: classId}
       }
     }
-  );
+  )
+  .then(() => {
+    return model.user.find({_id: userId});
+  });
 }
 
 function getAllUsers() {
@@ -123,6 +128,29 @@ function updateUser(email, firstName, lastName, address) {
     });
 }
 
+function getCheckedLessons(clientId, lessonArray) {
+  return model.user.find(
+    {
+      $and: [
+        { _id: clientId },
+        { result: {$elemMatch: {lesson: {$in: lessonArray}}} }
+      ]
+    }
+  );
+}
+
+function getCheckedUsers(classId) {
+  return model.user.find(
+    {
+      result: {
+        $elemMatch: {
+          lesson: classId
+        }
+      }
+    }
+  );
+}
+
 function createLesson(obj) {
   let newLesson = new model.lesson({
     _id: new mongoose.Types.ObjectId,
@@ -142,12 +170,6 @@ function getLessonByDate(schedule) { // pass initial date value (beginning of th
   );
 }
 
-function getCheckedLessons(clientId, schedule) {
-  return model.lesson.find(
-    { client: clientId, "schedule": {"$gte": new Date(schedule), "$lt": new Date(schedule + 1000 * 60 * 60 * 24)}}
-  );
-}
-
 function getLessonById(lessonId) {
   return model.lesson.find({_id: lessonId});
 }
@@ -164,14 +186,6 @@ function modifyLesson(obj) {
     .then((err, updatedLesson) => {
       return updatedLesson;
     });
-}
-
-function addUserToLesson(classId, userId) {
-  return model.lesson.update({ _id: classId }, { $addToSet: {client: userId} });
-}
-
-function removeUserFromLesson(classId, userId) {
-  return model.lesson.update({ _id: classId }, { $pull: {client: userId} });
 }
 
 function addMovement(name, modality) {
@@ -206,7 +220,7 @@ function createWod(name, benchmark, typed, exerciseArray, total, creator) {
     _id: new mongoose.Types.ObjectId,
     name: wodName,
     typed: typed,
-    wod: exerciseArray,
+    exercise_set: exerciseArray,
     totalduration: total,
     created_by: creator
   });
@@ -337,7 +351,7 @@ function getWodByCreator(creator) {
 // ];
 
 // a.map((item) => {
-//   createWod(item.name, true, item.typed, item.wod, 0, item.created_by);
+//   createWod(item.name, true, item.typed, item.exercise_set, 0, item.created_by);
 // });
 
 // ---------------------------------------------------
@@ -346,32 +360,32 @@ function getWodByCreator(creator) {
 //   {
 //     schedule: 'Oct 15 2016 12:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   },
 //   {
 //     schedule: 'Oct 15 2016 13:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   },
 //   {
 //     schedule: 'Oct 15 2016 14:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   },
 //   {
 //     schedule: 'Oct 16 2016 9:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   },
 //   {
 //     schedule: 'Oct 16 2016 10:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   },
 //   {
 //     schedule: 'Oct 16 2016 11:00:00 GMT-0300',
 //     coach: '57fbf38b89e51f2562f49252',
-//     wod: '57ffdd2312e31058fe8699d1'
+//     wod: '580ace9e6a779a5e269c8762'
 //   }
 // ];
 

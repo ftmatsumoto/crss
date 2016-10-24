@@ -24,14 +24,14 @@ let wodSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: { type: String, default: '' },
   typed: { type: String, default: 'other' }, // for time, for reps, for load, emom, tabata
-  characteristic: [{
+  characteristic: {
     scheme: { type: String, default: 'other' }, // couplet, triplet, chipper
     repetition: { type: String, default: 'other' }, // low, medium, high
     duration: { type: String, default: 'other' }, // low, medium, high
     load: { type: String, default: 'other' }, // light, medium, heavy
     modality: { type: String, default: 'other' }, // gymnastic, weightlifting, monostructural
     category: { type: String, default: 'other' } // open, girls, heroes, tournament x, y or z...
-  }],
+  },
   exercise_set: [{
     exercise: { type: mongoose.Schema.Types.ObjectId, ref:'Exercise' },
     reps: Number,
@@ -77,7 +77,6 @@ let lessonSchema = new mongoose.Schema({
   schedule: { type: Date, required: true, unique: true },
   coach: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   wod: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wod' }],
-  client: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true }],
   updated_at: { type: Date, default: Date.now }
 });
 

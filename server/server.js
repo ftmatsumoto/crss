@@ -122,23 +122,6 @@ app.get('/exercises', stormpath.loginRequired, (req, res) => {
     });
 });
 
-app.get('/classes', stormpath.loginRequired, (req, res) => {
-  let result = {};
-  db.lesson.getLessonByDate(Number(req.query.q))
-    .then((lesson) => {
-      result.allLessons = lesson;
-      return db.user.getUserByEmail(req.query.email);
-    })
-    .then((userId) => {
-      return db.lesson.getCheckedLessons(userId[0]._id, Number(req.query.q));
-    })
-    .then((checked) => {
-      result.checkedLessons = checked;
-      res.status(200).json(result);
-      res.end();
-    });
-});
-
 app.get('/results', stormpath.loginRequired, (req, res) => {
   db.user.getUserByEmail(req.query.email)
     .then((userArr) => {
@@ -148,44 +131,62 @@ app.get('/results', stormpath.loginRequired, (req, res) => {
     });
 });
 
+app.get('/classes', stormpath.loginRequired, (req, res) => {
+  let result = {};
+  db.lesson.getLessonByDate(Number(req.query.q))
+    .then((lesson) => {
+      result.allLessons = lesson;
+      result.lessonArray = lesson.map((lesson) => {
+        return lesson._id;
+      });
+      return db.user.getUserByEmail(req.query.email);
+    })
+    .then((userArr) => {
+      return db.user.getCheckedLessons(userArr[0]._id, result.lessonArray);
+    })
+    .then((checked) => {
+      result.checkedLessons = (checked.length === 0) ? [] : [checked[0].result[0].lesson];
+      res.status(200).json(result);
+      res.end();
+    });
+});
+
+app.get('/checkedusers', stormpath.loginRequired, (req, res) => {
+  db.user.getCheckedUsers(req.query.q)
+    .then((result) => {
+      res.status(200).json(result);
+      res.end();
+    });
+});
+
 app.put('/checkin', stormpath.loginRequired, (req, res) => {
-  let userId, schedule;
+  let userId;
   let result = {};
   db.user.getUserByEmail(req.body.email)
     .then((userArr) => {
-      userId = userArr[0].id;
-      return req.body.checked ? db.lesson.removeUserFromLesson(req.body.classId, userId) : db.lesson.addUserToLesson(req.body.classId, userId);
-    })
-    .then(() => {
-      if (req.body.otherclass.length !== 0) {
-        return db.user.removeResultFromUser(userId, req.body.otherclass[0]._id);
-      }
-    })
-    .then(() => {
-      if (req.body.otherclass.length !== 0) {
-        return db.lesson.removeUserFromLesson(req.body.otherclass[0]._id, userId);
-      }
-    })
-    .then(() => {
-      return db.lesson.getLessonById(req.body.classId);
-    })
-    .then((lessonArr) => {
-      let lesson = lessonArr[0];
-      schedule = lesson.schedule;
-      return db.wod.getWodById(lesson.wod);
+      userId = userArr[0]._id;
+      return db.wod.getWodById(req.body.wod);
     })
     .then((wod) => {
-      return req.body.checked ? db.user.removeResultFromUser(userId, req.body.classId) : db.user.addResultToUser(userId, wod[0], req.body.classId, schedule);
+      if (req.body.otherCFLesson[0] !== req.body.classId) {
+        // result is an array, but wod is an object
+        return db.user.addResultToUser(userId, wod[0], req.body.classId, req.body.schedule);
+      }
     })
     .then(() => {
-      return db.lesson.getCheckedLessons(userId, req.body.t);
+      if (req.body.otherCFLesson.length !== 0) {
+        return db.user.removeResultFromUser(userId, req.body.otherCFLesson[0]);
+      }
+    })
+    .then(() => {
+      return db.user.getCheckedUsers(req.body.classId);
+    })
+    .then((usersChecked) => {
+      result.usersChecked = usersChecked;
+      return db.user.getCheckedLessons(userId, req.body.allLessons);
     })
     .then((checked) => {
-      result.checked = checked;
-      return db.lesson.getLessonByDate(req.body.t);
-    })
-    .then((lesson) => {
-      result.lesson = lesson;
+      result.checkedLessons = (checked.length === 0) ? [] : [checked[0].result[0].lesson];
       res.status(200).json(result);
       res.end();
     });
