@@ -24,10 +24,17 @@ class FormExample extends Component {
   sendEmail(e) {
     // console.log($);
     e.preventDefault();
+    let currContext = this;
     let request = new XMLHttpRequest();
     let data = JSON.stringify({email: this.state.value});
     request.open('POST', '/email', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.onreadystatechange = () => {
+      if (request.readyState === XMLHttpRequest.DONE && request.status === 201) {
+        let responseObj = JSON.parse(request.responseText);
+        console.log(responseObj);
+      }
+    };
     request.send(data);
     this.setState({ value: '' });
   }
