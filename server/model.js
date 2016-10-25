@@ -23,7 +23,7 @@ let Movement = mongoose.model('Movement', movementSchema);
 let wodSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: { type: String, default: '' },
-  typed: { type: String, default: 'other' }, // for time, for reps, for load, emom, tabata
+  scoring: { type: String, default: 'other' }, // for time, for reps, for load, emom, tabata
   characteristic: {
     scheme: { type: String, default: 'other' }, // couplet, triplet, chipper
     repetition: { type: String, default: 'other' }, // low, medium, high
@@ -38,7 +38,7 @@ let wodSchema = new mongoose.Schema({
     weight: Number,
     unit: { type: String, default: 'kg' }
   }],
-  target: { type: Number, default: 0 }, // if it's for time, this target is 0
+  limit: { type: Number, default: 0 }, // total time, number of rounds, reps, etc...
   created_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   updated_at: { type: Date, default: Date.now }
 });
@@ -59,7 +59,7 @@ let userSchema = new mongoose.Schema({
     lesson: { type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' },
     comment: { type: String, required: false, maxLength: 255 },
     rx: { type: Boolean, default: true },
-    total: { type: Number, required: true },
+    score: { type: Number, required: true },  // number of reps, total time in miliseconds, total weight, number of rounds
     tiebreak: { type: Number, required: false },
     executed_at: { type: Date, required: true },
     updated_at: { type: Date, default: Date.now }
