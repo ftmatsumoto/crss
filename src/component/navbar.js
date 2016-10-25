@@ -25,21 +25,17 @@ const navbarComponent = () => (
           <NavItem eventKey={3}>Equipe</NavItem>
         </LinkContainer>
       </Nav>
-      {/*<Nav pullRight>
-              <Authenticated>
-                <LogoutLink>Logout</LogoutLink>
-              </Authenticated>
-              <NotAuthenticated>
-                <a href="/login">Login</a>
-                <LoginLink>Login</LoginLink>
-              </NotAuthenticated>
-              <NotAuthenticated>
-                <a href="/register">Register</a>
-                <LinkContainer to="/registration">
-                            <NavItem eventKey={2}>Register</NavItem>
-                          </LinkContainer>
-              </NotAuthenticated>
-            </Nav>*/}
+      <Nav pullRight>
+        <Authenticated>
+          <LogoutLink>Logout</LogoutLink>
+        </Authenticated>
+        <NotAuthenticated>
+          <a href="/login">Login</a>
+        </NotAuthenticated>
+        <NotAuthenticated>
+          <a href="/register">Register</a>
+        </NotAuthenticated>
+      </Nav>
     </Navbar.Collapse>
   </Navbar>
 );

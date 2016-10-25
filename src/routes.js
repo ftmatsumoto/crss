@@ -3,17 +3,17 @@ import { Route, IndexRoute } from 'react-router';
 import ReactStormpath, { Router, AuthenticatedRoute, LoginLink, HomeRoute, LoginRoute } from 'react-stormpath';
 
 import App from './container/App';
-import Home from './container/home';
-import Team from './container/team';
+import Chat from './container/chat';
+import Checkin from './container/checkin';
 import Coach from './container/coach';
-import Schedule from './container/schedule';
+import Home from './container/home';
+import Payment from './container/payment';
 import Price from './container/price';
-import RegistrationPage from './container/registration';
-import LoginPage from './container/login';
 import ProfilePage from './container/profile';
-
-{/*<Route path="/registration" component={RegistrationPage}/>
-    <LoginRoute path='/login' component={LoginPage} />*/}
+import ResultPage from './container/result';
+import Schedule from './container/schedule';
+import Team from './container/team';
+import Wod from './container/wod';
 
 export default (
   <Route path="/" component={App}>
@@ -26,6 +26,11 @@ export default (
     <Route path="/precos" component={Price}/>
     <AuthenticatedRoute>
       <HomeRoute path='/profile' component={ProfilePage} />
+      <Route path="/chat" component={Chat}/>
+      <Route path="/checkin" component={Checkin}/>
+      <Route path="/payment" component={Payment}/>
+      <Route path="/wod" component={Wod}/>
+      <Route path="/result" component={ResultPage}/>
     </AuthenticatedRoute>
   </Route>
 );
