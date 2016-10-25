@@ -81,9 +81,19 @@ app.use(serveStatic(__dirname + '/../build'));
 const PORT = process.env.PORT || 8128;
 
 app.post('/email', (req, res) => {
-  db.email.addEmail(req.body.email);
-  res.status(201).json(req.body);
-  res.end();
+  db.email.findEmail(req.body.email)
+    .then((email) => {
+      let resObj = {};
+      if (email.length === 0) {
+        db.email.addEmail(req.body.email);
+        resObj.success = true;
+      } else {
+        resObj.success = false;
+      }
+      resObj.email = req.body.email;
+      res.status(201).json(resObj);
+      res.end();
+    });
 });
 
 app.get('/userprofile', stormpath.loginRequired, (req, res) => {

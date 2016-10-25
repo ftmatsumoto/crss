@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Modal } from 'react-bootstrap';
 
 class FormExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      showModal: false,
+      message: ''
     };
   }
 
@@ -26,21 +28,38 @@ class FormExample extends Component {
     e.preventDefault();
     let currContext = this;
     let request = new XMLHttpRequest();
-    let data = JSON.stringify({email: this.state.value});
-    request.open('POST', '/email', true);
-    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    request.onreadystatechange = () => {
-      if (request.readyState === XMLHttpRequest.DONE && request.status === 201) {
-        let responseObj = JSON.parse(request.responseText);
-        console.log(responseObj);
-      }
-    };
-    request.send(data);
-    this.setState({ value: '' });
+    if (this.getValidationState() === 'success') {
+      let data = JSON.stringify({email: this.state.value});
+      request.open('POST', '/email', true);
+      request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      request.onreadystatechange = () => {
+        if (request.readyState === XMLHttpRequest.DONE && request.status === 201) {
+          let responseObj = JSON.parse(request.responseText);
+          currContext.setState({
+            showModal: true,
+            message: responseObj.success ? `Email ${responseObj.email} cadastrado com sucesso!` : `Email ${responseObj.email} já está cadastrado!`
+          });
+        }
+      };
+      request.send(data);
+      this.setState({ value: '' });
+    } else {
+      currContext.setState({
+        showModal: true,
+        message: 'Por favor, preencher o email de forma correta'
+      });
+    }
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
+  }
+
+  close() {
+    this.setState({
+      showModal: false,
+      message: ''
+    });
   }
 
   render() {
@@ -62,6 +81,17 @@ class FormExample extends Component {
           <HelpBlock></HelpBlock>
           <Button type="submit" className="cadastrar">Cadastrar</Button>
         </FormGroup>
+        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Cadastro de email</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>{this.state.message}</p>
+​          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close.bind(this)}>Fechar</Button>
+          </Modal.Footer>
+        </Modal>
       </form>
     );
   }

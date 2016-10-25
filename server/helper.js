@@ -6,6 +6,7 @@ const model = require('./model.js');
 module.exports = {
   email: {
     addEmail: addEmail,
+    findEmail: findEmail,
     getAllEmail: getAllEmails
   },
   user: {
@@ -49,10 +50,12 @@ function addEmail(email) {
     });
 }
 
+function findEmail(email) {
+  return model.email.find({email: email});
+}
+
 function getAllEmails() {
-  model.email.find((err, emails) => {
-    console.log(emails);
-  });
+  return model.email.find();
 }
 
 function addUser(email, firstName, lastName) {
