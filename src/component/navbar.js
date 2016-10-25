@@ -25,7 +25,7 @@ const navbarComponent = () => (
           <NavItem eventKey={3}>Equipe</NavItem>
         </LinkContainer>
       </Nav>
-      <Nav pullRight>
+      {/*<Nav pullRight>
         <Authenticated>
           <LogoutLink>Logout</LogoutLink>
         </Authenticated>
@@ -35,7 +35,7 @@ const navbarComponent = () => (
         <NotAuthenticated>
           <a href="/register">Register</a>
         </NotAuthenticated>
-      </Nav>
+      </Nav>*/}
     </Navbar.Collapse>
   </Navbar>
 );
