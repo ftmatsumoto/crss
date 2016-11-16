@@ -35,7 +35,7 @@ class UsersDialog extends Component {
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose.bind(this)}
+        onClick={this.handleClose.bind(this)}
       />
     ];
 
@@ -44,7 +44,7 @@ class UsersDialog extends Component {
         label="Add client"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleOpen.bind(this)}
+        onClick={this.handleOpen.bind(this)}
       >
         <Dialog
           title="Adicionar alunos"

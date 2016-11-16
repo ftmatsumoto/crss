@@ -35,7 +35,7 @@ class ClassesDialog extends Component {
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose.bind(this)}
+        onClick={this.handleClose.bind(this)}
       />,
       <Authenticated inGroup="(admin || coach)">
         <UsersDialog />
@@ -44,7 +44,7 @@ class ClassesDialog extends Component {
         label="Check In"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.props.toggleClass.bind(this)}
+        onClick={this.props.toggleClass.bind(this)}
       />
     ];
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Using an ES6 transpiler, like Babel.
 import ReactStormpath, { Router } from 'react-stormpath';
@@ -12,7 +12,7 @@ import './index.css';
 
 import ReactGA from 'react-ga';
 
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 ReactGA.initialize('UA-86048339-1', {
   debug: true
