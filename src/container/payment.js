@@ -8,7 +8,7 @@ class Payment extends Component {
 
   componentWillMount() {
     let request = new XMLHttpRequest();
-    let context = this;
+    // let context = this;
     request.open('GET', '/payment', true);
     request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     request.onreadystatechange = () => {
