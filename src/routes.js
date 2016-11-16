@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 import ReactStormpath, { Router, AuthenticatedRoute, LoginLink, HomeRoute, LoginRoute } from 'react-stormpath';
 
 import App from './container/App';
@@ -18,7 +18,7 @@ import Wod from './container/wod';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
-    <HomeRoute path='/' component={Home} />
+    <HomeRoute path='/' component={Home}/>
     <Route path="/equipe" component={Team}>
       <Route path="/equipe/:coach" component={Coach}/>
     </Route>
@@ -32,5 +32,6 @@ export default (
       <Route path="/wod" component={Wod}/>
       <Route path="/result" component={ResultPage}/>
     </AuthenticatedRoute>
+    <Redirect from="*" to="/"/>
   </Route>
 );
