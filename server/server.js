@@ -1,9 +1,10 @@
 const app = require('express')();
+const express = require('express');
 const partials = require('express-partials');
-const serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
 const path = require('path');
 const stormpath = require('express-stormpath');
+const request = require('request');
 
 const db = require('./helper.js');
 
@@ -75,7 +76,7 @@ app.use(stormpath.init(app, {
 
 app.use(partials());
 app.use(bodyParser.json());
-app.use(serveStatic(__dirname + '/../build'));
+app.use(express.static(__dirname + '/../build'));
 
 // Constants
 const PORT = process.env.PORT || 8128;
@@ -202,8 +203,22 @@ app.put('/checkin', stormpath.loginRequired, (req, res) => {
     });
 });
 
+app.get('/payment', (req, res) => {
+  let url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions/';
+  request
+    .post(url)
+    .form({email: 'admin@crossfitki.com.br', token: 'DC0FAEAA97934B62BC30656A820CC573'})
+    // .pipe('test.xml');
+    .on('response', function(response) {
+      response.on('data', (chunk) => {
+        console.log(chunk.toString('ascii'));
+        res.status(200).send(chunk.toString('ascii'));
+      });
+    });
+});
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'));
+  res.sendFile(path.resolve(__dirname, '../build/index.html'));
 });
 
 app.on('stormpath.ready', () => {
