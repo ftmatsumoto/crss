@@ -8,21 +8,21 @@ let prices = [
     title: 'Mensal',
     quantity: 1,
     priceTag: 360,
-    link: 'https://pag.ae/bdfg9vn'
+    link: 'https://pag.ae/bbfhbmN'
   },
   {
     individual: false,
     title: 'Trimestral',
     quantity: 3,
     priceTag: 330,
-    link: 'https://pag.ae/bgfg9xY'
+    link: 'https://pag.ae/bffhbsc'
   },
   {
     individual: false,
     title: 'Semestral',
     quantity: 6,
     priceTag: 300,
-    link: 'https://pag.ae/bbfgXCv'
+    link: 'https://pag.ae/bffhbtJ'
   }
 ];
 
