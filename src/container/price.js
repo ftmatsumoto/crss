@@ -7,19 +7,22 @@ let prices = [
     individual: false,
     title: 'Mensal',
     quantity: 1,
-    priceTag: 360
+    priceTag: 360,
+    link: 'https://pag.ae/bdfg9vn'
   },
   {
     individual: false,
     title: 'Trimestral',
     quantity: 3,
-    priceTag: 330
+    priceTag: 330,
+    link: 'https://pag.ae/bgfg9xY'
   },
   {
     individual: false,
     title: 'Semestral',
     quantity: 6,
-    priceTag: 300
+    priceTag: 300,
+    link: 'https://pag.ae/bbfgXCv'
   }
 ];
 
@@ -38,7 +41,7 @@ const Price = () => (
     </div>
     <div className="row pricing">
       {prices.map((price, id, arr) => {
-        return <Pricetable key={id} id={id} individual={price.individual} length={arr.length} title={price.title} price={price.priceTag}/>
+        return <Pricetable key={id} id={id} individual={price.individual} length={arr.length} title={price.title} price={price.priceTag} link={price.link}/>
       })}
     </div>
     <p><i><sup>*</sup>Obs: Preços promocionais válidos para os alunos que se cadastrarem antes da inauguração do box! Cadastre-se agora!</i></p>

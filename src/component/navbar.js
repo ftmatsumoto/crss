@@ -26,6 +26,7 @@ const navbarComponent = () => (
         </LinkContainer>
       </Nav>
       {/*
+
       <Nav pullRight>
         <Authenticated>
           <LogoutLink>Logout</LogoutLink>
@@ -37,6 +38,7 @@ const navbarComponent = () => (
           <a href="/register">Register</a>
         </NotAuthenticated>
       </Nav>
+
       */}
     </Navbar.Collapse>
   </Navbar>

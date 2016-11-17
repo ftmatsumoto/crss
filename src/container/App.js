@@ -19,7 +19,7 @@ class App extends Component {
           <NavbarComponent/>
         </div>
         <div className="container-body">
-          <Authenticated><SidebarComponent/></Authenticated>
+          {/*<Authenticated><SidebarComponent/></Authenticated>*/}
           {this.props.children || <Home/>}
         </div>
       </div>
