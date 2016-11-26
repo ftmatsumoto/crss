@@ -23,14 +23,14 @@ function logPageView() {
   ReactGA.pageview(window.location.pathname);
 }
 
-const muiTheme = getMuiTheme({
-  appBar: {
-    textColor: 'black'
-  },
-});
+// const muiTheme = getMuiTheme({
+//   appBar: {
+//     textColor: 'black'
+//   },
+// });
 
 const App = () => (
-  <MuiThemeProvider muiTheme={muiTheme}>
+  <MuiThemeProvider>
     <Router history={browserHistory} onUpdate={logPageView}>{Routes}</Router>
   </MuiThemeProvider>
 );
