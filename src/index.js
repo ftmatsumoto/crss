@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 // Using an ES6 transpiler, like Babel.
 import ReactStormpath, { Router } from 'react-stormpath';
@@ -11,8 +13,6 @@ import Routes from './routes';
 import './index.css';
 
 import ReactGA from 'react-ga';
-
-// injectTapEventPlugin();
 
 ReactGA.initialize('UA-86048339-1', {
   debug: true
@@ -23,8 +23,14 @@ function logPageView() {
   ReactGA.pageview(window.location.pathname);
 }
 
+const muiTheme = getMuiTheme({
+  appBar: {
+    textColor: 'black'
+  },
+});
+
 const App = () => (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <Router history={browserHistory} onUpdate={logPageView}>{Routes}</Router>
   </MuiThemeProvider>
 );
