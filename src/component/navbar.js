@@ -79,9 +79,11 @@ const navbarComponent = (props) => (
       <Authenticated>
         <div><img style={{width: '120px', height: '120px'}} src={svglogo} /></div>
       </Authenticated>
-      <FlatButton label="Horários" className="desktop-version" onTouchTap={() => browserHistory.push("/horarios")}/>
-      <FlatButton label="Preços" className="desktop-version" onTouchTap={() => browserHistory.push("/precos")}/>
-      <FlatButton label="Equipe" className="desktop-version" onTouchTap={() => browserHistory.push("/equipe")}/>
+      <NotAuthenticated>
+        <FlatButton label="Horários" className="desktop-version" onTouchTap={() => browserHistory.push("/horarios")}/>
+        <FlatButton label="Preços" className="desktop-version" onTouchTap={() => browserHistory.push("/precos")}/>
+        <FlatButton label="Equipe" className="desktop-version" onTouchTap={() => browserHistory.push("/equipe")}/>
+      </NotAuthenticated>
     </ToolbarGroup>
     <ToolbarGroup lastChild={true} >
       <Authenticated>
