@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import { Authenticated, NotAuthenticated, LogoutLink, LoginLink } from 'react-stormpath';
 
@@ -101,6 +101,7 @@ const navbarComponent = (props) => (
               primaryText="Profile"
               onTouchTap={() => {
                 browserHistory.push('/profile');
+                props.selectBottomTab(-1);
                 props.handleClosePopover();
               }
             }/>
@@ -108,6 +109,7 @@ const navbarComponent = (props) => (
               primaryText="Histórico"
               onTouchTap={() => {
                 browserHistory.push('/result');
+                props.selectBottomTab(0);
                 props.handleClosePopover();
               }
             }/>
@@ -115,6 +117,7 @@ const navbarComponent = (props) => (
               primaryText="Pagamentos"
               onTouchTap={() => {
                 browserHistory.push('/payment');
+                props.selectBottomTab(2);
                 props.handleClosePopover();
               }
             } />
@@ -122,6 +125,7 @@ const navbarComponent = (props) => (
               primaryText="Check In"
               onTouchTap={() => {
                 browserHistory.push('/checkin');
+                props.selectBottomTab(1);
                 props.handleClosePopover();
               }
             } />

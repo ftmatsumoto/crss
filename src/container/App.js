@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       drawerOpen: false,
-      popoverOpen: false
+      popoverOpen: false,
+      selectedIndex: 0
     };
   }
 
@@ -32,8 +33,12 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       popoverOpen: true,
-      anchorEl: event.currentTarget,
+      anchorEl: event.currentTarget
     });
+  }
+
+  selectBottomTab(index) {
+    this.setState({selectedIndex: index});
   }
 
   render() {
@@ -47,6 +52,7 @@ class App extends Component {
             handleCloseDrawer={this.handleCloseDrawer.bind(this)}
             handleClosePopover={this.handleClosePopover.bind(this)}
             handleTouchPopover={this.handleTouchPopover.bind(this)}
+            selectBottomTab={this.selectBottomTab.bind(this)}
           />
         </div>
         <div className="container-body">
@@ -54,7 +60,10 @@ class App extends Component {
         </div>
         <div>
           <Authenticated>
-            <BottomNavigation />
+            <BottomNavigation
+              selectedIndex={this.state.selectedIndex}
+              selectBottomTab={this.selectBottomTab.bind(this)}
+            />
           </Authenticated>
         </div>
       </div>

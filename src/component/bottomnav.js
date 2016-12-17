@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { browserHistory } from 'react-router';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
@@ -18,41 +19,36 @@ const containerStyle = {
   width: '100%'
 };
 
-class BottomNavigationExampleSimple extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedIndex: 0
-    };
-  }
+const BottomNavbar = (props) => (
+  <Paper style={containerStyle} zDepth={1} className="mobile-version">
+    <BottomNavigation selectedIndex={props.selectedIndex}>
+      <BottomNavigationItem
+        label="Histórico"
+        icon={<ActionHistory />}
+        onTouchTap={() => {
+          browserHistory.push("/result");
+          props.selectBottomTab(0);
+        }}
+      />
+      <BottomNavigationItem
+        label="Check In"
+        icon={<IconLocationOn />}
+        onTouchTap={() => {
+          browserHistory.push("/checkin");
+          props.selectBottomTab(1);
+        }}
+      />
+      <BottomNavigationItem
+        label="Pagamento"
+        icon={<ActionCreditCard />}
+        onTouchTap={() => {
+          browserHistory.push("/payment");
+          props.selectBottomTab(2);
+        }}
+      />
+    </BottomNavigation>
+  </Paper>
+);
 
-  select(index) {
-    this.setState({selectedIndex: index});
-  }
 
-  render() {
-    return (
-      <Paper style={containerStyle} zDepth={1} className="mobile-version">
-        <BottomNavigation selectedIndex={this.state.selectedIndex}>
-          <BottomNavigationItem
-            label="Histórico"
-            icon={<ActionHistory />}
-            onTouchTap={() => this.select(0)}
-          />
-          <BottomNavigationItem
-            label="Check In"
-            icon={<IconLocationOn />}
-            onTouchTap={() => this.select(1)}
-          />
-          <BottomNavigationItem
-            label="Pagamento"
-            icon={<ActionCreditCard />}
-            onTouchTap={() => this.select(2)}
-          />
-        </BottomNavigation>
-      </Paper>
-    );
-  }
-}
-
-export default BottomNavigationExampleSimple;
+export default BottomNavbar;
