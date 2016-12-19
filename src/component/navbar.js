@@ -22,7 +22,8 @@ const containerStyle = {
   position: 'fixed',
   height: '60px',
   width: '100%',
-  zIndex: '100'
+  zIndex: '100',
+  alignItems: 'center'
 };
 
 const separatorStyle = {
