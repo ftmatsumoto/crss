@@ -27,7 +27,8 @@ const containerStyle = {
 };
 
 const separatorStyle = {
-  margin: '0 0 0 0'
+  margin: '0 0 0 0',
+  position: 'initial'
 };
 
 const stormpathStyle = {
