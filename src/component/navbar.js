@@ -39,7 +39,7 @@ const navbarComponent = (props) => (
     <ToolbarGroup firstChild={true} >
       <NotAuthenticated>
         <IconButton
-          style={{width: '96px', height: '96px'}}
+          style={{width: '96px', height: '96px', alignItems: 'center'}}
           onTouchTap={props.handleToggleDrawer}
           className="mobile-version"
         >
