@@ -36,7 +36,7 @@ const stormpathStyle = {
 
 const navbarComponent = (props) => (
   <Toolbar style={containerStyle} >
-    <ToolbarGroup firstChild={true} >
+    <ToolbarGroup firstChild={true} style={{alignItems: 'center'}}>
       <NotAuthenticated>
         <IconButton
           style={{width: '96px', height: '96px', alignItems: 'center'}}
