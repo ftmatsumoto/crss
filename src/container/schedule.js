@@ -9,7 +9,6 @@ const Schedule = () => (
     </div>
     <Timetable/>
     <div>
-      <p><i><sup>*</sup>Os horários para iniciantes podem mudar de acordo com a demanda por aulas regulares.</i></p>
     </div>
   </div>
 );

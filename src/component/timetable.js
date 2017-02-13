@@ -17,11 +17,11 @@ const timetable = () => (
     <tbody>
       <tr>
         <td>6:00</td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
+        <td>Crossfit</td>
         <td>CrossFit</td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
+        <td>Crossfit</td>
         <td>CrossFit</td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
+        <td>Crossfit</td>
         <td></td>
       </tr>
       <tr>
@@ -81,10 +81,10 @@ const timetable = () => (
       <tr>
         <td>18:00</td>
         <td>CrossFit</td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
+        <td>Crossfit</td>
         <td>CrossFit</td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
-        <td><i>Iniciantes<sup>*</sup></i></td>
+        <td>Crossfit</td>
+        <td>Crossfit</td>
         <td></td>
       </tr>
       <tr>

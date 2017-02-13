@@ -8,21 +8,21 @@ let prices = [
     title: 'Mensal',
     quantity: 1,
     priceTag: 360,
-    link: 'https://pag.ae/bbfhbmN'
+    link: 'https://m.me/crossfitki'
   },
   {
     individual: false,
     title: 'Trimestral',
     quantity: 3,
     priceTag: 330,
-    link: 'https://pag.ae/bffhbsc'
+    link: 'https://m.me/crossfitki'
   },
   {
     individual: false,
     title: 'Semestral',
     quantity: 6,
     priceTag: 300,
-    link: 'https://pag.ae/bffhbtJ'
+    link: 'https://m.me/crossfitki'
   }
 ];
 
@@ -36,7 +36,6 @@ const Price = () => (
         <li>Número ilimitado de treinos por mês</li>
         <li>Horários e dias flexíveis</li>
         <li>Competições exclusivas para alunos</li>
-        <li>Prioridade nos seminários e workshops oferecidos no box</li>
       </ul>
     </div>
     <div className="row pricing">
@@ -44,7 +43,7 @@ const Price = () => (
         return <Pricetable key={id} id={id} individual={price.individual} length={arr.length} title={price.title} price={price.priceTag} link={price.link}/>
       })}
     </div>
-    <p><i><sup>*</sup>Obs: Preços promocionais válidos para os alunos que se cadastrarem antes da inauguração do box! Cadastre-se agora!</i></p>
+    {/*<p><i><sup>*</sup>Obs: Preços promocionais válidos para os alunos que se cadastrarem antes da inauguração do box! Cadastre-se agora!</i></p>*/}
     <hr/>
     <div>
       <h3>Taxa de matrícula</h3>
@@ -59,7 +58,7 @@ const Price = () => (
     </div>
     <div className="row pricing">
       <div className="col-sm-4 col-sm-offset-4 dropin">
-        <Pricetable id={0} individual={true} length={1} title={"Drop in"} price={50}/>
+        <Pricetable id={0} individual={true} length={1} title={"Drop in"} price={50} link={"https://m.me/crossfitki"}/>
       </div>
     </div>
   </div>

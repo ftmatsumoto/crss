@@ -16,14 +16,6 @@ let members = [
     long: ['Caio foi professor de 2009 a 2016 na CrossFit Brasil, o primeiro box de CrossFit no Brasil.', 'Além de ser um dos professores mais experientes de CrossFit no Brasil, Caio trabalhou com Mônica Pimenta de 2012 a 2016 no Espaço Funcional, a principal referência de Kettlebel no Brasil.', 'Antes disso, trabalhou como coordenador e professor de musculação e treinamento funcional na ÚNICA Academia de 1997 a 2005 com Ricardo e Luciano D\'Elia.', 'Ao longo de sua carreira, Caio foi responsável pela preparação de atletas de diversas modalidades, principalmente judô e tênis, e seus atletas representaram o país em muitas competições internacionais.', 'Como competidor do Atletismo, Caio sagrou-se campeão Brasileiro e Sul-Americano.']
   },
   {
-    img: fabioImg,
-    link: 'fabio',
-    name: 'Fabio Lorençone',
-    title: 'Coach da CrossFit Ki',
-    short: ['CREF: 4607-G/SP', 'Graduado pela FEFISA', 'CrossFit Level 1 Trainer', 'CrossFit Mobility Trainer', 'CrossFit Endurance Trainer'],
-    long: ['Aficionado por música e pela Kira (sua Golden Retriever), Fabio adora ajudar as pessoas à alcançarem metas desafiadoras.', 'Fabio está envolvido na comunidade CrossFit há 7 anos.', 'Professor na CrossFit Brasil de 2011 a 2016.', 'Foi Head Judge do TCB (Torneio CrossFit Brasil) e das Seletivas do torneio.', 'Participou dos cursos de capacitação promovidos pela CrossFit Brasil como professor auxiliar.', 'Certificado como Master Instructor do programa Schwinn Cycling, Fabio foi coordernador do programa de Ciclismo Indoor da rede de academias Runner, onde ministrou várias aulas de ginástica.','Além disso, foi atleta em toda sua vida. Foi nadador por Santo André, cidade onde nasceu. Fez ciclismo e foi integrante da extinta equipe da Pirelli em Santo André.']
-  },
-  {
     img: felipeImg,
     link: 'felipe',
     name: 'Felipe Matsumoto',
