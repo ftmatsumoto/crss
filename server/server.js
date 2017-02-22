@@ -97,6 +97,11 @@ app.post('/email', (req, res) => {
     });
 });
 
+app.get('/blog', (req, res) => {
+  res.status(301).redirect('http://blog.crossfitki.com.br');
+  res.end();
+});
+
 app.get('/userprofile', stormpath.loginRequired, (req, res) => {
   db.user.getUserByEmail(req.user.email)
     .then((user) => {
