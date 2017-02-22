@@ -61,7 +61,7 @@ const timetable = () => (
         <td></td>
       </tr>
       <tr>
-        <td>12:30</td>
+        <td>12:00</td>
         <td>CrossFit</td>
         <td>CrossFit</td>
         <td>CrossFit</td>

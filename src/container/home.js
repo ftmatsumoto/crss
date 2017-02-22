@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Collapse, Glyphicon } from 'react-bootstrap';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import messenger_logo from '../asset/facebook-messenger-white.svg';
 import Timer from '../component/timer.js';
@@ -57,16 +58,10 @@ class Home extends Component {
         <header className="business-header">
           <div className="container-header">
             <div className="text-header">
-              <div className="row" style={{visibility: "hidden"}}>
-                <div className="col-md-12">
-                  <h3 style={{margin: "10px 0 0 0"}}>Faltam</h3>
-                  <Timer days={this.state.days} hours={this.state.hours} mins={this.state.mins} secs={this.state.secs} deadline={this.state.deadline}/>
-                </div>
-              </div>
-              <h2>{/*Inauguração no dia {this.state.deadline.getDate()} de {month[this.state.deadline.getMonth()]} ({weekday[this.state.deadline.getDay()]})!*/}Estamos chegando!</h2>
-              <div className="allpages-form" style={{padding: "20px 0 10px 0", maxWidth: "400px", minWidth: "300px", margin:"auto", color: "black", textShadow: "0 0 0"}}>
-                <EmailForm />
-              </div>
+              <h1>Be stronger than your strongest excuse!</h1>
+            </div>
+            <div>
+              <RaisedButton label="Comece agora" primary={true} />
             </div>
           </div>
           <div className="layer">
@@ -74,6 +69,13 @@ class Home extends Component {
         </header>
 
         <div className="container home">
+          <div>
+            <div>
+              <h2 className="section-title">PRONTO PARA COMEÇAR?</h2>
+              <hr/>
+              <p className="section-body"><b>Siga esses 3 passos e comece a mudar sua vida!</b></p>
+            </div>
+          </div>
           <hr/>
 
           <div className="row">
@@ -134,6 +136,7 @@ class Home extends Component {
                 Klabin - São Paulo<br/>
                 Telefone:<br/>
                 Fixo: (011) 3280-1716<br/>
+
               </address>
               <div className="btn-block">
                 <Button className="btn btn-default" href="mailto:admin@crossfitki.com.br" block>

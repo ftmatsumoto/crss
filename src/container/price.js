@@ -35,7 +35,6 @@ const Price = () => (
       <ul>
         <li>Número ilimitado de treinos por mês</li>
         <li>Horários e dias flexíveis</li>
-        <li>Competições exclusivas para alunos</li>
       </ul>
     </div>
     <div className="row pricing">
@@ -58,7 +57,7 @@ const Price = () => (
     </div>
     <div className="row pricing">
       <div className="col-sm-4 col-sm-offset-4 dropin">
-        <Pricetable id={0} individual={true} length={1} title={"Drop in"} price={50} link={"https://m.me/crossfitki"}/>
+        <Pricetable id={0} individual={true} length={1} title={"Drop in"} price={35} link={"https://m.me/crossfitki"}/>
       </div>
     </div>
   </div>
