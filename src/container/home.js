@@ -2,54 +2,25 @@ import React, { Component } from 'react';
 import { Button, Collapse, Glyphicon } from 'react-bootstrap';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import messenger_logo from '../asset/facebook-messenger-white.svg';
-import Timer from '../component/timer.js';
-import CarouselInst from '../component/carousel.js';
 import EmailForm from './emailform.js';
 
-const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-const weekday = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+import IconButton from 'material-ui/IconButton';
+import SvgIcon from 'material-ui/SvgIcon';
+
+import messenger_logo from '../asset/messenger.svg';
+import question from '../asset/question.svg';
+import calendar from '../asset/calendar.svg';
+import weightlifting from '../asset/weightlifting.svg';
+
+import GoogleMap from 'google-map-react';
+import Marker from '../component/marker.js';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deadline: new Date('Oct 29 2016 10:00:00 GMT-0300'),
       open: false
     };
-  }
-
-  setCurrTime() {
-    this.setState({
-      currTime: new Date(),
-      t: setTimeout(this.setCurrTime.bind(this), 500)
-    }, this.setDiff());
-  }
-
-  setDiff() {
-    let daysF = (this.state.deadline - this.state.currTime) / (1000 * 60 * 60 * 24);
-    let days = Math.floor(daysF);
-    let hoursF = (daysF - days) * 24;
-    let hours = Math.floor(hoursF);
-    let minsF = (hoursF - hours) * 60;
-    let mins = Math.floor(minsF);
-    let secsF = (minsF - mins) * 60;
-    let secs = Math.floor(secsF);
-
-    this.setState({
-      days: days,
-      hours: hours,
-      mins: mins,
-      secs: secs
-    });
-  }
-
-  componentWillMount() {
-    this.setCurrTime();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.state.t);
   }
 
   render() {
@@ -58,9 +29,9 @@ class Home extends Component {
         <header className="business-header">
           <div className="container-header">
             <div className="text-header">
-              <h1>Be stronger than your strongest excuse!</h1>
+              <p style={{fontSize: "3em", fontFamily: "Permanent Marker, cursive"}}>Be stronger than your strongest excuse!</p>
             </div>
-            <div>
+            <div style={{transform: "translateY(-100%)"}}>
               <RaisedButton label="Comece agora" primary={true} />
             </div>
           </div>
@@ -70,64 +41,73 @@ class Home extends Component {
 
         <div className="container home">
           <div>
-            <div>
-              <h2 className="section-title">PRONTO PARA COMEÇAR?</h2>
-              <hr/>
-              <p className="section-body"><b>Siga esses 3 passos e comece a mudar sua vida!</b></p>
-            </div>
-          </div>
-          <hr/>
-
-          <div className="row">
-            <div className="col-sm-12">
-              <h2 className="section-title">O que é CrossFit?</h2>
-            </div>
-            <div className="col-sm-6">
-              <p>CrossFit é um método de treinamento desenvolvido por Greg Glassman com o objetivo de melhorar a capacidade física e a saúde dos praticantes. No CrossFit, os atletas realizam movimentos funcionais variados em alta intensidade. Muitos exercícios são baseados em movimentos utilizados em outros esportes como ginástica olímpica, levantamento olímpico, corrida, remo e outros.</p>
-              <Button className="home-btn" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                Saiba mais
-              </Button>
-              <Collapse in={this.state.open}>
-                <div>
-                  <p>Outro componente fundamental que diferencia o CrossFit é o formato das aulas. As aulas são realizadas em grupo e esse formato propicia um ambiente amigavel e estimulante para os praticantes, mesmo aqueles que não estão acostumados com o esporte. Assim, cada atleta faz o exercício de acordo com a sua capacidade física, se desafiando a cada treino. Isso fez com que uma grande comunidade surgisse em torno do esporte em um curto espaço de tempo. Hoje, existem mais de 11.000 boxes oficiais espalhados pelo mundo.</p>
-                </div>
-              </Collapse>
-            </div>
-            <div className="col-sm-6">
-              <div className="embed-responsive embed-responsive-16by9">
-                <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/mlVrkiCoKkg" allowFullScreen>
-                </iframe>
+            <h2 className="section-title">PRONTO PARA MUDAR SUA VIDA?</h2>
+            <p className="section-title"><b>Siga esses 3 passos e comece hoje mesmo.</b></p>
+            <div className="steps-wrapper">
+              <div className="steps-content">
+                <a href="/o-que-e-crossfit">
+                  <img style={{width: "50%", display: "block", margin: "0 auto"}} src={question} />
+                  <h3>1. O QUE É CROSSFIT?</h3>
+                  <p>
+                    CrossFit é para todos! Entenda porque o CrossFit conquista praticantes todos os dias!
+                  </p>
+                </a>
+              </div>
+              <div className="steps-content">
+                <a href="/aula-experimental-crossfit">
+                  <img style={{width: "50%", display: "block", margin: "0 auto"}} src={calendar} />
+                  <h3>2. MARQUE UMA AULA</h3>
+                  <p>
+                    Sua primeira aula é por nossa conta! Venha sentir o que é fazer parte dessa comunidade!
+                  </p>
+                </a>
+              </div>
+              <div className="steps-content">
+                <a href="/blog">
+                  <img style={{width: "50%", display: "block", margin: "0 auto"}} src={weightlifting} />
+                  <h3>3. TREINE CROSSFIT</h3>
+                  <p>
+                    Acompanhe diariamente os nossos treinos e melhore a sua qualidade de vida!
+                  </p>
+                </a>
               </div>
             </div>
           </div>
 
           <hr/>
 
-          <div className="row">
-            <div className="col-sm-6 col-sm-offset-6">
-              <h2 className="section-title">CrossFit Ki</h2>
+          <div>
+            <h2 className="section-title">LOCALIZAÇÃO</h2>
+            <div style={{fontWeight: "bold", textAlign: "center"}}>
+              <address>
+                Rua Dionísio da Costa, 353<br/>
+                Vila Mariana - São Paulo - SP<br/>
+                CEP 04117-110<br/>
+              </address>
             </div>
-            <div className="col-sm-6">
-              <CarouselInst />
-            </div>
-            <div className="col-sm-6">
-              <p>
-                Ki é a energia vital presente em nossos corpos. Esse termo tem sua origem em países asiáticos como China, Índia e Japão.
-              </p>
-              <p>
-                Acreditamos que a energia da Crossfit vem da sua incrível comunidade e queremos estimular isso em nossos atletas!
-              </p>
-              <p>
-                Para concretizarmos isso, contamos com professores muito experientes e instalações modernas com os melhores equipamentos disponíveis no mercado para a pratica do esporte.
-              </p>
+            <div style={{width: "100%", height: "350px"}}>
+              <GoogleMap
+                apiKey={'AIzaSyAycWQ1YRN1JEHHnW3rRtIfeBWxc9VynnU'}
+                center={[-23.589381, -46.625175]}
+                zoom={16}
+              >
+                <Marker
+                  lat={-23.589381}
+                  lng={-46.625175}
+                />
+              </GoogleMap>
             </div>
           </div>
 
           <hr/>
+          <div>
+            <h2 className="section-title">CONTATO</h2>
+
+          </div>
 
           <div className="row last-row">
             <div className="col-sm-12">
-              <h2 className="section-title">Treine conosco</h2>
+              <h2 className="section-title">LOCALIZAÇÃO</h2>
             </div>
             <div className="col-sm-6">
               <p>Venha fazer parte da nossa comunidade!</p>
@@ -158,13 +138,6 @@ class Home extends Component {
 
           <hr/>
 
-          <footer>
-            <div className="row">
-              <div className="col-sm-12">
-                <p>Copyright &copy; CrossFit Ki 2016</p>
-              </div>
-            </div>
-          </footer>
         </div>
       </div>
     );
