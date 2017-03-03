@@ -16,7 +16,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import NavigationMoreVert from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationExpandMore from 'material-ui/svg-icons/navigation/expand-more';
-import svglogo from '../asset/KI_Cross_Fit_logo.svg';
+import svglogo from '../asset/crossfitki.svg';
 
 const containerStyle = {
   position: 'fixed',
@@ -92,87 +92,6 @@ const navbarComponent = (props) => (
         <FlatButton label="Preços" className="desktop-version" onTouchTap={() => browserHistory.push("/precos")}/>
         <FlatButton label="Equipe" className="desktop-version" onTouchTap={() => browserHistory.push("/equipe")}/>
         <a href="/blog"><FlatButton label="Blog" className="desktop-version"/></a>
-      </NotAuthenticated>
-    </ToolbarGroup>
-    <ToolbarGroup lastChild={true} >
-      <Authenticated>
-        <FlatButton
-          icon={<NavigationMoreVert />}
-          onTouchTap={props.handleTouchPopover}
-        />
-        <Popover
-          open={props.popoverOpen}
-          anchorEl={props.anchorEl}
-          anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          onRequestClose={props.handleClosePopover}
-        >
-          <Menu>
-            <MenuItem
-              primaryText="Profile"
-              onTouchTap={() => {
-                browserHistory.push('/profile');
-                props.selectBottomTab(-1);
-                props.handleClosePopover();
-              }
-            }/>
-            <MenuItem
-              primaryText="Histórico"
-              onTouchTap={() => {
-                browserHistory.push('/result');
-                props.selectBottomTab(0);
-                props.handleClosePopover();
-              }
-            }/>
-            <MenuItem
-              primaryText="Pagamentos"
-              onTouchTap={() => {
-                browserHistory.push('/payment');
-                props.selectBottomTab(2);
-                props.handleClosePopover();
-              }
-            } />
-            <MenuItem
-              primaryText="Check In"
-              onTouchTap={() => {
-                browserHistory.push('/checkin');
-                props.selectBottomTab(1);
-                props.handleClosePopover();
-              }
-            } />
-            <LogoutLink style={stormpathStyle}><MenuItem primaryText='Log out' /></LogoutLink>
-          </Menu>
-        </Popover>
-      </Authenticated>
-      <NotAuthenticated>
-        <FlatButton
-          className="mobile-version"
-          icon={<NavigationMoreVert />}
-          onTouchTap={props.handleTouchPopover}
-        />
-        <Popover
-          open={props.popoverOpen}
-          anchorEl={props.anchorEl}
-          anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          onRequestClose={props.handleClosePopover}
-        >
-          <Menu>
-            <MenuItem
-              primaryText="Login"
-              href="/login"
-              />
-            <MenuItem
-              primaryText="Register"
-              href="/register"
-            />
-          </Menu>
-        </Popover>
-        <a className="desktop-version" href="/login"><FlatButton label="Login" /></a>
-      </NotAuthenticated>
-      <ToolbarSeparator className="desktop-version" style={separatorStyle} />
-      <NotAuthenticated>
-        <a className="desktop-version" href="/register"><FlatButton label="Register" /></a>
       </NotAuthenticated>
     </ToolbarGroup>
   </Toolbar>
