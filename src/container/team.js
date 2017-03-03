@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Teammember from '../component/teammember.js';
 import Coach from '../container/coach.js';
 import caioImg from '../asset/caio.jpg';
-import fabioImg from '../asset/fabio.jpg';
 import felipeImg from '../asset/felipe.jpg';
 
 let members = [
