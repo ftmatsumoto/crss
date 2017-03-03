@@ -8,9 +8,11 @@ import IconButton from 'material-ui/IconButton';
 import svglogo from '../asset/crossfitki_marker.svg';
 import facebooklogo from '../asset/facebook.svg';
 import instagramlogo from '../asset/instagram.svg';
+import googlepluslogo from '../asset/googleplus.svg';
 import messengerlogo from '../asset/messenger.svg';
 import mailoutline from '../asset/mailoutline.svg';
 import phone from '../asset/phone.svg';
+import whatsapp from '../asset/whatsapp.svg';
 
 import Home from './home';
 import '../App.css';
@@ -76,17 +78,30 @@ class App extends Component {
                   </Authenticated>
                 </div>*/}
         <footer>
-          <div className="footer-logo">
-            <img className="footer-svg-ki" src={svglogo}/>
+          <div className="footer-contact">
+            <div className="footer-contact-left">
+              <p><b>Endereço</b>
+                <address>
+                  Rua Dionísio da Costa, 353<br/>
+                  Vila Mariana - São Paulo - SP<br/>
+                  CEP 04117-110<br/>
+                </address>
+              </p>
+            </div>
+            <div className="footer-contact-right">
+              <p style={{color: "white", margin: "10px 0 0 0"}}><b>Contato</b></p>
+              <a href="https://m.me/crossfitki"><img src={messengerlogo}/>Messenger</a>
+              <a href="mailto:admin@crossfitki.com.br"><img src={mailoutline}/>contato@crossfitki.com.br</a>
+              <a href="tel:+5511965746947"><img src={whatsapp}/>(11) 96574-6947</a>
+              <a href="tel:+551150824557"><img src={phone}/>(11) 5082-4557</a>
+            </div>
           </div>
-          <div className="footer-social">
-            <p>Faça parte dessa comunidade!</p>
-            <div className="social-media">
-              <a href="https://www.facebook.com/crossfitki"><div className="media-div"><img src={facebooklogo}/></div></a>
-              <a href="https://www.instagram.com/crossfitki"><div className="media-div"><img src={instagramlogo}/></div></a>
-              <a href="https://m.me/crossfitki"><div className="media-div"><img src={messengerlogo}/></div></a>
-              <a href="mailto:admin@crossfitki.com.br"><div className="media-div"><img src={mailoutline}/></div></a>
-              <a href="tel:+5511965746947"><div className="media-div"><img src={phone}/></div></a>
+
+          <div className="footer-social-media">
+            <div className="footer-social-media-container">
+              <a href="https://www.facebook.com/crossfitki"><img className="footer-logo" src={facebooklogo}/></a>
+              <a href="https://www.instagram.com/crossfitki"><img className="footer-logo" src={instagramlogo}/></a>
+              <a href="https://plus.google.com/+CrossfitkiBr"><img className="footer-logo" src={googlepluslogo}/></a>
             </div>
           </div>
         </footer>

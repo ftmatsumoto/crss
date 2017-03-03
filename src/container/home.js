@@ -100,43 +100,6 @@ class Home extends Component {
           </div>
 
           <hr/>
-          <div>
-            <h2 className="section-title">CONTATO</h2>
-
-          </div>
-
-          <div className="row last-row">
-            <div className="col-sm-12">
-              <h2 className="section-title">LOCALIZAÇÃO</h2>
-            </div>
-            <div className="col-sm-6">
-              <p>Venha fazer parte da nossa comunidade!</p>
-              <address>
-                Rua Dionísio da Costa, 353<br/>
-                Klabin - São Paulo<br/>
-                Telefone:<br/>
-                Fixo: (011) 3280-1716<br/>
-
-              </address>
-              <div className="btn-block">
-                <Button className="btn btn-default" href="mailto:admin@crossfitki.com.br" block>
-                  <Glyphicon glyph="envelope" /> Envie por email
-                </Button>
-                <Button className="btn btn-default messenger" href="https://m.me/crossfitki" block>
-                  <img className="img-messenger" src={messenger_logo}/>
-                  <span>Envie pelo Messenger</span>
-                </Button>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <h4>Preços promocionais válidos até a data de inauguração do box!</h4>
-              <div className="allpages-form">
-                <EmailForm />
-              </div>
-            </div>
-          </div>
-
-          <hr/>
 
         </div>
       </div>

@@ -74,6 +74,12 @@ const navbarComponent = (props) => (
           >Equipe</MenuItem>
           <MenuItem
             onTouchTap={() => {
+              browserHistory.push("/contato");
+              props.handleCloseDrawer();
+            }}
+          >Contato</MenuItem>
+          <MenuItem
+            onTouchTap={() => {
               browserHistory.push("/blog");
               props.handleCloseDrawer();
             }}
@@ -91,6 +97,7 @@ const navbarComponent = (props) => (
         <FlatButton label="Horários" className="desktop-version" onTouchTap={() => browserHistory.push("/horarios")}/>
         <FlatButton label="Preços" className="desktop-version" onTouchTap={() => browserHistory.push("/precos")}/>
         <FlatButton label="Equipe" className="desktop-version" onTouchTap={() => browserHistory.push("/equipe")}/>
+        <FlatButton label="Contato" className="desktop-version" onTouchTap={() => browserHistory.push("/contato")}/>
         <a href="/blog"><FlatButton label="Blog" className="desktop-version"/></a>
       </NotAuthenticated>
     </ToolbarGroup>

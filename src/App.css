@@ -291,32 +291,6 @@ body {
   margin: 0 auto;
 }
 
-.messenger {
-  background-color: #0084FF;
-  color: white;
-  padding: 0 10px 0 0;
-}
-
-.messenger:hover {
-  background-color: #0084FF;
-  color: white;
-  padding: 0 10px 0 0;
-}
-
-.img-messenger {
-  height: 2.5em;
-}
-
-.row.last-row {
-  text-align: center;
-}
-
-@media (min-width: 48em) {
-  .row.last-row {
-    text-align: left;
-  }
-}
-
 .pricing {
   padding: 10px 0 0 0;
 }
@@ -477,49 +451,84 @@ body {
 }
 
 footer {
-  display: -webkit-flex;
-  -webkit-flex-direction: column;
   background-color: rgb(0, 0, 0);
   margin-top: 25px;
-  height: 250px;
-  align-items: center;
+  height: 350px;
 }
 
-.footer-logo {
-  background-color: black;
-  width: 60px;
-  height: 60px;
-  margin: auto;
+@media (min-width: 43.75em) {
+  footer {
+    height: 250px;
+  }
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact div p {
   margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 50%;
 }
 
-.footer-svg-ki {
-  width: 100px;
-  height: 100px;
-  transform: translate(-20%,-20%);
+.footer-contact-left {
+  color: white;
+  margin: auto;
+  text-align: left;
 }
 
-.footer-social {
-  text-align: center;
+.footer-contact-right {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.social-media {
+.footer-contact-right img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.footer-contact-right a {
+  color: #FFFFFF;
+}
+
+.footer-contact-right a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+@media (min-width: 43.75em) {
+  .footer-contact {
+    flex-direction: row;
+  }
+}
+
+.footer-social-media {
   display: -webkit-flex;
   -webkit-flex-direction: column;
 }
 
-@media (min-width: 48em) {
-  .social-media {
+@media (min-width: 43.75em) {
+  .footer-social-media {
     -webkit-flex-direction: row;
   }
 }
-.media-div {
-  background-color: grey;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: 10px;
+
+.footer-social-media-container {
+  margin: auto;
+  margin-top: 20px;
 }
 
+.footer-social-media img {
+  width: 33%;
+  height: 40px;
+}
+
+@media (min-width: 43.75em) {
+  .footer-social-media img {
+    width: 40px;
+    height: 40px;
+    margin: 20px 30px 30px 30px
+  }
+}
