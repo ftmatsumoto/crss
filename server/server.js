@@ -97,6 +97,11 @@ app.post('/email', (req, res) => {
     });
 });
 
+app.post('/contact-us', (req,res) => {
+  console.log(req.body.firstValue, req.body.lastValue, req.body.emailValue, req.body.msgValue);
+  res.end();
+});
+
 app.get('/blog', (req, res) => {
   res.status(301).redirect('http://blog.crossfitki.com.br');
   res.end();
