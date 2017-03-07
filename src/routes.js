@@ -6,6 +6,7 @@ import App from './container/App';
 import Chat from './container/chat';
 import Checkin from './container/checkin';
 import Coach from './container/coach';
+import Contact from './container/contact';
 import Home from './container/home';
 import Payment from './container/payment';
 import Price from './container/price';
@@ -24,6 +25,7 @@ export default (
     </Route>
     <Route path="/horarios" component={Schedule}/>
     <Route path="/precos" component={Price}/>
+    <Route path="/contato" component={Contact}/>
     <AuthenticatedRoute>
       <HomeRoute path='/profile' component={ProfilePage} />
       <Route path="/chat" component={Chat}/>

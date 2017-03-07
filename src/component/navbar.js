@@ -80,10 +80,9 @@ const navbarComponent = (props) => (
           >Contato</MenuItem>
           <MenuItem
             onTouchTap={() => {
-              browserHistory.push("/blog");
               props.handleCloseDrawer();
             }}
-          >Blog</MenuItem>
+          ><a href="/blog" className="blog-link">Blog</a></MenuItem>
           <Divider />
         </Drawer>
       </NotAuthenticated>
