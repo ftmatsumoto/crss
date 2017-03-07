@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Glyphicon } from 'react-bootstrap';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import EmailForm from './emailform.js';
-
-import IconButton from 'material-ui/IconButton';
-import SvgIcon from 'material-ui/SvgIcon';
 
 import messenger_logo from '../asset/messenger.svg';
 import question from '../asset/question.svg';
 import calendar from '../asset/calendar.svg';
 import weightlifting from '../asset/weightlifting.svg';
+import Directions from 'material-ui/svg-icons/maps/directions';
 
 import GoogleMap from 'google-map-react';
 import Marker from '../component/marker.js';
@@ -18,9 +15,7 @@ import Marker from '../component/marker.js';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: false
-    };
+    this.state = {};
   }
 
   render() {
@@ -39,7 +34,7 @@ class Home extends Component {
           </div>
         </header>
 
-        <div className="container home">
+        <div className="container-children">
           <div>
             <h2 className="section-title">PRONTO PARA MUDAR SUA VIDA?</h2>
             <p className="section-title"><b>Siga esses 3 passos e comece hoje mesmo.</b></p>
@@ -83,6 +78,12 @@ class Home extends Component {
                 Rua Dionísio da Costa, 353<br/>
                 Vila Mariana - São Paulo - SP<br/>
                 CEP 04117-110<br/>
+                <RaisedButton
+                  style={{marginTop: "5px"}}
+                  href="http://maps.google.com/?q=CrossFit+Ki"
+                  label="Google Maps"
+                  icon={<Directions />}
+                />
               </address>
             </div>
             <div style={{width: "100%", height: "350px"}}>

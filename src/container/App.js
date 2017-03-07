@@ -3,9 +3,9 @@ import { Authenticated } from 'react-stormpath';
 
 import NavbarComponent from '../component/navbar';
 import BottomNavigation from '../component/bottomnav';
-import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import Directions from 'material-ui/svg-icons/maps/directions';
 
-import svglogo from '../asset/crossfitki_marker.svg';
 import facebooklogo from '../asset/facebook.svg';
 import instagramlogo from '../asset/instagram.svg';
 import googlepluslogo from '../asset/googleplus.svg';
@@ -85,13 +85,19 @@ class App extends Component {
                   Rua Dionísio da Costa, 353<br/>
                   Vila Mariana - São Paulo - SP<br/>
                   CEP 04117-110<br/>
+                  <RaisedButton
+                    style={{marginTop: "5px"}}
+                    href="http://maps.google.com/?q=CrossFit+Ki"
+                    label="Google Maps"
+                    icon={<Directions />}
+                  />
                 </address>
               </p>
             </div>
             <div className="footer-contact-right">
               <p style={{color: "white", margin: "10px 0 0 0"}}><b>Contato</b></p>
               <a href="https://m.me/crossfitki"><img src={messengerlogo}/>Messenger</a>
-              <a href="mailto:admin@crossfitki.com.br"><img src={mailoutline}/>contato@crossfitki.com.br</a>
+              <a href="mailto:contato@crossfitki.com.br"><img src={mailoutline}/>contato@crossfitki.com.br</a>
               <a href="tel:+5511965746947"><img src={whatsapp}/>(11) 96574-6947</a>
               <a href="tel:+551150824557"><img src={phone}/>(11) 5082-4557</a>
             </div>
