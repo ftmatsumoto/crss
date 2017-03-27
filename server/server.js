@@ -3,8 +3,9 @@ const express = require('express');
 const partials = require('express-partials');
 const bodyParser = require('body-parser');
 const path = require('path');
-const stormpath = require('express-stormpath');
 const request = require('request');
+const stormpath = require('express-stormpath');
+const nodemailer = require('nodemailer');
 
 const db = require('./helper.js');
 
@@ -16,11 +17,33 @@ if (process.env.STORMPATH_CLIENT_APIKEY_ID) {
       id: process.env.STORMPATH_CLIENT_APIKEY_ID,
       secret: process.env.STORMPATH_CLIENT_APIKEY_SECRET,
       href: process.env.STORMPATH_APPLICATION_HREF
+    },
+    yahoo: {
+      user: process.env.YAHOO_USER,
+      pass: process.env.YAHOO_PASS
     }
   };
 } else {
   credential = require('./credential.js');
 }
+
+let transporter = nodemailer.createTransport({
+  service: "Yahoo",
+  host: "smtp.mail.yahoo.com",
+  auth: {
+    user: credential.yahoo.user,
+    pass: credential.yahoo.pass
+  }
+});
+
+// verify connection configuration
+transporter.verify(function(error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Server is ready to take our messages');
+  }
+});
 
 app.use(stormpath.init(app, {
   expand: {
@@ -99,6 +122,21 @@ app.post('/email', (req, res) => {
 
 app.post('/contact-us', (req,res) => {
   console.log(req.body.firstValue, req.body.lastValue, req.body.emailValue, req.body.msgValue);
+  let mailOptions = {
+    from: "felipetmatsumoto@yahoo.com.br",
+    to: "admin@crossfitki.com.br",
+    subject: "Hello",
+    generateTextFromHTML: true,
+    html: "<b>Hello world</b>"
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
+  });
   res.end();
 });
 
