@@ -125,9 +125,12 @@ app.post('/contact-us', (req,res) => {
   let mailOptions = {
     from: "felipetmatsumoto@yahoo.com.br",
     to: "admin@crossfitki.com.br",
-    subject: "Hello",
+    subject: "Contato pelo site",
     generateTextFromHTML: true,
-    html: "<b>Hello world</b>"
+    html: `Nome: ${req.body.firstValue}<br>
+           Sobrenome: ${req.body.lastValue}<br>
+           Email: ${req.body.emailValue}<br>
+           Mensagem: ${req.body.msgValue}<br>`
   };
 
   // send mail with defined transport object
@@ -137,6 +140,34 @@ app.post('/contact-us', (req,res) => {
     }
     console.log('Message %s sent: %s', info.messageId, info.response);
   });
+  res.status(201);
+  res.end();
+});
+
+
+app.post('/aula-experimental', (req,res) => {
+  console.log(req.body.firstValue, req.body.lastValue, req.body.emailValue, req.body.phoneValue, req.body.dateValue, req.body.timeValue);
+  let mailOptions = {
+    from: "felipetmatsumoto@yahoo.com.br",
+    to: "admin@crossfitki.com.br",
+    subject: "Aula experimental",
+    generateTextFromHTML: true,
+    html: `Nome: ${req.body.firstValue}<br>
+           Sobrenome: ${req.body.lastValue}<br>
+           Email: ${req.body.emailValue}<br>
+           Telefone: ${req.body.phoneValue}<br>
+           Data: ${req.body.dateValue}<br>
+           Horário: ${req.body.timeValue}`
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
+  });
+  res.status(201);
   res.end();
 });
 
@@ -275,3 +306,6 @@ app.on('stormpath.ready', () => {
   });
 });
 
+// const server = app.listen(PORT, () => {
+//   console.log('Running on http://localhost:' + PORT);
+// });
