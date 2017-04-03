@@ -124,7 +124,7 @@ app.post('/contact-us', (req,res) => {
   console.log(req.body.firstValue, req.body.lastValue, req.body.emailValue, req.body.msgValue);
   let mailOptions = {
     from: "felipetmatsumoto@yahoo.com.br",
-    to: "admin@crossfitki.com.br",
+    to: "contato@crossfitki.com.br",
     subject: "Contato pelo site",
     generateTextFromHTML: true,
     html: `Nome: ${req.body.firstValue}<br>
@@ -149,7 +149,7 @@ app.post('/aula-experimental', (req,res) => {
   console.log(req.body.firstValue, req.body.lastValue, req.body.emailValue, req.body.phoneValue, req.body.dateValue, req.body.timeValue);
   let mailOptions = {
     from: "felipetmatsumoto@yahoo.com.br",
-    to: "admin@crossfitki.com.br",
+    to: "contato@crossfitki.com.br",
     subject: "Aula experimental",
     generateTextFromHTML: true,
     html: `Nome: ${req.body.firstValue}<br>
