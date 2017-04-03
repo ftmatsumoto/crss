@@ -5,7 +5,6 @@ import ReactStormpath, { Router, AuthenticatedRoute, LoginLink, HomeRoute, Login
 import App from './container/App';
 import Chat from './container/chat';
 import Checkin from './container/checkin';
-import Coach from './container/coach';
 import Contact from './container/contact';
 import Description from './container/description';
 import FirstClass from './container/firstclass';
@@ -22,9 +21,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
     <HomeRoute path='/' component={Home}/>
-    <Route path="/equipe" component={Team}>
-      <Route path="/equipe/:coach" component={Coach}/>
-    </Route>
+    <Route path="/equipe" component={Team}/>
     <Route path="/horarios" component={Schedule}/>
     <Route path="/precos" component={Price}/>
     <Route path="/contato" component={Contact}/>
