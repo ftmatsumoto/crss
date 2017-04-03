@@ -99,7 +99,7 @@ const navbarComponent = (props) => (
       </Drawer>
 
       <a href="/"><img style={{width: "120px", height: "60px"}} src={svglogo} /></a>
-      <ToolbarGroup sytle={{display:"flex"}}>
+      <ToolbarGroup style={{display:"flex"}}>
         <MenuItem
           primaryText="COMO COMEÇAR"
           style={{width:"185px"}}
