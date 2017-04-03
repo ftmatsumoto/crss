@@ -22,8 +22,9 @@ class App extends Component {
     super(props);
     this.state = {
       drawerOpen: false,
-      popoverOpen: false,
-      selectedIndex: 0
+      navPopover: false,
+      selectedIndex: 0,
+      displayHowTo: false
     };
   }
 
@@ -36,20 +37,27 @@ class App extends Component {
     this.setState({drawerOpen: false});
   }
 
-  handleClosePopover() {
-    this.setState({popoverOpen: false});
+  selectBottomTab(index) {
+    this.setState({selectedIndex: index});
   }
 
-  handleTouchPopover(event) {
+  handleNavPopover(event) {
     event.preventDefault();
+
     this.setState({
-      popoverOpen: true,
-      anchorEl: event.currentTarget
+      navPopover: true,
+      anchorEl: event.currentTarget,
     });
   }
 
-  selectBottomTab(index) {
-    this.setState({selectedIndex: index});
+  handleNavPopoverClose() {
+    this.setState({
+      navPopover: false,
+    });
+  }
+
+  handleOpenHowTo() {
+    this.setState({displayHowTo: !this.state.displayHowTo});
   }
 
   render() {
@@ -57,13 +65,16 @@ class App extends Component {
       <div>
         <div className="container-nav">
           <NavbarComponent
+            anchorEl={this.state.anchorEl}
+            displayHowTo={this.state.displayHowTo}
             drawerOpen={this.state.drawerOpen}
-            popoverOpen={this.state.popoverOpen}
+            navPopover={this.state.navPopover}
             handleToggleDrawer={this.handleToggleDrawer.bind(this)}
             handleCloseDrawer={this.handleCloseDrawer.bind(this)}
-            handleClosePopover={this.handleClosePopover.bind(this)}
-            handleTouchPopover={this.handleTouchPopover.bind(this)}
             selectBottomTab={this.selectBottomTab.bind(this)}
+            handleNavPopover={this.handleNavPopover.bind(this)}
+            handleNavPopoverClose={this.handleNavPopoverClose.bind(this)}
+            handleOpenHowTo={this.handleOpenHowTo.bind(this)}
           />
         </div>
         <div className="container-body">
@@ -94,12 +105,15 @@ class App extends Component {
                 </address>
               </p>
             </div>
-            <div className="footer-contact-right">
+            <div className="footer-contact-middle">
               <p style={{color: "white", margin: "10px 0 0 0"}}><b>Contato</b></p>
               <a href="https://m.me/crossfitki"><img src={messengerlogo}/>Messenger</a>
               <a href="mailto:contato@crossfitki.com.br"><img src={mailoutline}/>contato@crossfitki.com.br</a>
               <a href="tel:+5511965746947"><img src={whatsapp}/>(11) 96574-6947</a>
               <a href="tel:+551150824557"><img src={phone}/>(11) 5082-4557</a>
+            </div>
+            <div className="footer-contact-right">
+              <a href="http://journal.crossfit.com/start.tpl?version=CFJ-white123x63" target="_blank" title="CrossFit Journal: The Performance-Based Lifestyle Resource"><img src="http://journal.crossfit.com/templates/images/white-125x63.png" width="125px" height="63px" alt="CrossFit Journal: The Performance-Based Lifestyle Resource" /></a>
             </div>
           </div>
 

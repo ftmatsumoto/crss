@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+
 import RaisedButton from 'material-ui/RaisedButton';
 
-import EmailForm from './emailform.js';
-
-import messenger_logo from '../asset/messenger.svg';
 import question from '../asset/question.svg';
 import calendar from '../asset/calendar.svg';
 import weightlifting from '../asset/weightlifting.svg';
@@ -27,7 +26,13 @@ class Home extends Component {
               <p style={{fontSize: "3em", fontFamily: "Permanent Marker, cursive"}}>Be stronger than your strongest excuse!</p>
             </div>
             <div style={{transform: "translateY(-100%)"}}>
-              <RaisedButton label="Comece agora" primary={true} />
+              <RaisedButton
+                label="Comece agora"
+                primary={true}
+                onTouchTap={()=>{
+                  browserHistory.push("/aula-experimental");
+                }}
+              />
             </div>
           </div>
           <div className="layer">

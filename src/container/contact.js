@@ -8,12 +8,14 @@ import whatsapp from '../asset/whatsapp.svg';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mensagemEnviada: false,
+      open: false,
       firstError: "",
       firstValue: "",
       lastError: "",
@@ -23,6 +25,14 @@ class Contact extends Component {
       msgError: "",
       msgValue: ""
     };
+  }
+
+  handleOpen() {
+    this.setState({open: true});
+  }
+
+  handleClose() {
+    this.setState({open: false});
   }
 
   onChange(field, event) {
@@ -57,8 +67,7 @@ class Contact extends Component {
 
     let nameregex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
     let emailregex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let msgregex = /^([A-Za-z0-9\ \_\.\,\!\"\'\/\$])+$/;
-    console.log(msgregex.test(message), message);
+    let msgregex = /^([A-Za-z0-9áÁéÉíÍóÓúÚãÃõÕàÀèÈìÌòÒùÙâÂêÊôÔ\ \_\.\,\!\"\'\/\$\r\n])+$/;
     if (nome.length > 0 && sobrenome.length > 0 && email.length > 0 && message.length > 0) {
       if (emailregex.test(email) && nameregex.test(nome) && nameregex.test(sobrenome) && msgregex.test(message)) {
         return "success";
@@ -108,9 +117,8 @@ class Contact extends Component {
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE && request.status === 201) {
-          let responseObj = JSON.parse(request.responseText);
           currContext.setState({
-            mensagemEnviada: true
+            open: true
           });
         }
       };
@@ -187,13 +195,26 @@ class Contact extends Component {
                 style={formStyle.text}
                 value={this.state.msgValue}
               />
-              <RaisedButton style={formStyle.button} label="Enviar" type="submit" />
+              <RaisedButton style={formStyle.button} label="Enviar" type="submit" primary={true} />
+              <Dialog
+                title="Obrigado pelo contato"
+                actions={[<FlatButton
+                          label="Ok"
+                          primary={true}
+                          onTouchTap={this.handleClose.bind(this)}
+                        />]}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose.bind(this)}
+              >
+                Mensagem enviada com sucesso!
+              </Dialog>
             </form>
           </Paper>
         </div>
       </div>
     );
   }
-};
+}
 
 export default Contact;

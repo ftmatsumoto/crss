@@ -115,7 +115,8 @@ class Schedule extends Component {
 
   render() {
     return (
-      <div className="container-children" style={{marginTop: "20px"}}>
+      <div className="container-children">
+        <h2>Horários</h2>
         <div className="desktop-table">
           <Table
             selectable={false}

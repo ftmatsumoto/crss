@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Pricetable from '../component/pricetable.js';
 
 let prices = [
@@ -29,7 +28,7 @@ let prices = [
 const Price = () => (
   <div className="container-children">
     <div>
-      <h2>Planos e preços</h2>
+      <h2>Planos</h2>
       <hr/>
       <p>Todos os nossos planos oferecem:</p>
       <ul>
@@ -42,7 +41,6 @@ const Price = () => (
         return <Pricetable key={id} id={id} individual={price.individual} length={arr.length} title={price.title} price={price.priceTag} link={price.link}/>
       })}
     </div>
-    {/*<p><i><sup>*</sup>Obs: Preços promocionais válidos para os alunos que se cadastrarem antes da inauguração do box! Cadastre-se agora!</i></p>*/}
     <hr/>
     <div>
       <h3>Taxa de matrícula</h3>
@@ -52,8 +50,7 @@ const Price = () => (
     </div>
     <hr/>
     <div>
-      <h3>Drop in</h3>
-      <p>Para pessoas que já praticam CrossFit em outros boxes e querem conhecer a CrossFit Ki!</p>
+      <h3>Diárias avulsas</h3>
     </div>
     <div className="row pricing">
       <div className="col-sm-4 col-sm-offset-4 dropin">

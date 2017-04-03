@@ -16,7 +16,7 @@ import './index.css';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-86048339-1', {
-  debug: true
+  debug: false
 });
 
 function logPageView() {
