@@ -40,42 +40,63 @@ const Description = () => (
         </div>
       </div>
 
+      <hr style={{width: "100%"}}/>
+
       <div className="description-images">
-        <hr style={{width: "100%"}}/>
         <div className="steps-wrapper">
           <div className="steps-content description">
+            <div>
+
             <img style={{width: "80%", display: "block", margin: "0 auto"}} src={weightlifting} />
+            </div>
+            <div>
+
             <h3>EXERCÍCIOS FUNCIONAIS</h3>
             <p style={{textAlign: "justify"}}>
               Exercícios funcionais são aqueles movimentos que te preparam para a vida fora do box. Agachar, correr, saltar, arremessar, puxar, levantar objetos do chão. Os exercícios do CrossFit usam esses movimentos porque eles são muito mais eficientes para nos condicionar para nossas atividades do dia a dia.
             </p>
+            </div>
           </div>
           <div className="steps-content description">
+            <div>
+
             <img style={{width: "80%", display: "block", margin: "0 auto"}} src={calendar} />
+            </div>
+            <div>
+
             <h3>VARIAÇÃO CONSTANTE</h3>
             <p style={{textAlign: "justify"}}>
               Variar os exercícios constantemente faz parte do programa da CrossFit. A rotina dos exercícios é seu inimigo, ou seja, quanto mais consistente for sua rotina de exercícios, menos preparado você estará para outras atividades. Situações inesperadas no mundo real podem ocorrer com todos e seus exercícios deveriam refletir isso.
             </p>
+            </div>
           </div>
           <div className="steps-content description">
+            <div>
+
             <img style={{width: "80%", display: "block", margin: "0 auto"}} src={heart} />
+            </div>
+            <div>
+
             <h3>ALTA INTENSIDADE</h3>
             <p style={{textAlign: "justify"}}>
               Intensidade é uma medida da física e é um elemento chave para medir o condicionamento físico. Intensidade é definido como trabalho realizado dividido pelo tempo para executá-lo. Uma corrida leve é facil e de baixa intensidade, uma corrida na velocidade máxima que você consegue atingir é mais difícil e de alta intensidade. Esse tipo de intensidade gera melhores resultados.
             </p>
+            </div>
           </div>
         </div>
-        <hr style={{width: "100%"}}/>
-        <div style={{display: "flex"}}>
-          <RaisedButton
-            label="Comece agora"
-            primary={true}
-            style={{margin: "auto"}}
-            onTouchTap={() => {
-              browserHistory.push("/aula-experimental");
-            }}
-          />
-        </div>
+      </div>
+
+      <hr style={{marginTop:"20px", width: "100%"}}/>
+
+      <div style={{display: "flex"}}>
+        <RaisedButton
+          label="Comece agora"
+          primary={true}
+          style={{margin: "auto"}}
+          onTouchTap={() => {
+            browserHistory.push("/aula-experimental");
+          }}
+        />
       </div>
     </div>
 
