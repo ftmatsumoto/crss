@@ -148,47 +148,47 @@ app.post('/contact-us', (req,res) => {
 
 
 app.post('/aula-experimental', (req,res) => {
-  let helper = require('sendgrid').mail;
-  let from_email = new helper.Email('felipetmatsumoto@yahoo.com.br');
-  let to_email = new helper.Email('contato@crossfitki.com.br');
-  let subject = 'Hello World from the SendGrid Node.js Library!';
-  let content = new helper.Content('text/plain', 'Hello, Email!');
-  let mail = new helper.Mail(from_email, subject, to_email, content);
+  // let helper = require('sendgrid').mail;
+  // let from_email = new helper.Email('felipetmatsumoto@yahoo.com.br');
+  // let to_email = new helper.Email('contato@crossfitki.com.br');
+  // let subject = 'Hello World from the SendGrid Node.js Library!';
+  // let content = new helper.Content('text/plain', 'Hello, Email!');
+  // let mail = new helper.Mail(from_email, subject, to_email, content);
 
-  let sg = require('sendgrid')(credential.sendgrid.api);
+  // let sg = require('sendgrid')(credential.sendgrid.api);
 
-  let request = sg.emptyRequest({
-    method: 'POST',
-    path: '/v3/mail/send',
-    body: mail.toJSON(),
-  });
-
-  sg.API(request, (error, response) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-    console.log(response.headers);
-  });
-
-  // let mailOptions = {
-  //   from: "felipetmatsumoto@yahoo.com.br",
-  //   to: "contato@crossfitki.com.br",
-  //   subject: "Aula experimental",
-  //   generateTextFromHTML: true,
-  //   html: `Nome: ${req.body.firstValue}<br>
-  //          Sobrenome: ${req.body.lastValue}<br>
-  //          Email: ${req.body.emailValue}<br>
-  //          Telefone: ${req.body.phoneValue}<br>
-  //          Data: ${req.body.dateValue}<br>
-  //          Horário: ${req.body.timeValue}`
-  // };
-
-  // // send mail with defined transport object
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     return console.log(error);
-  //   }
-  //   console.log('Message %s sent: %s', info.messageId, info.response);
+  // let request = sg.emptyRequest({
+  //   method: 'POST',
+  //   path: '/v3/mail/send',
+  //   body: mail.toJSON(),
   // });
+
+  // sg.API(request, (error, response) => {
+  //   console.log(response.statusCode);
+  //   console.log(response.body);
+  //   console.log(response.headers);
+  // });
+
+  let mailOptions = {
+    from: "felipetmatsumoto@yahoo.com.br",
+    to: "contato@crossfitki.com.br",
+    subject: "Aula experimental",
+    generateTextFromHTML: true,
+    html: `Nome: ${req.body.firstValue}<br>
+           Sobrenome: ${req.body.lastValue}<br>
+           Email: ${req.body.emailValue}<br>
+           Telefone: ${req.body.phoneValue}<br>
+           Data: ${req.body.dateValue}<br>
+           Horário: ${req.body.timeValue}`
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
+  });
 
   res.status(201);
   res.end();
