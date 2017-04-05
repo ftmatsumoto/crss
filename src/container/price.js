@@ -95,7 +95,7 @@ const Price = () => (
           <Paper zDepth={2} className="price-table dropin" style={{backgroundColor:"rgb(232,232,232)"}}>
             <div className="price-table-header">Aula avulsa</div>
             <div className="price-table-pricetag">
-              <div>R$ 330 <span>/10 aulas</span></div>
+              <div>R$ 300 <span>/10 aulas</span></div>
             </div>
             <div className="price-table-benefits">
               <div>Sem restrições de horários</div>
