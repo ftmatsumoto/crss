@@ -50,6 +50,28 @@ function addEmail(email) {
     });
 }
 
+function saveContact(email) {
+  let newContact = new model.contact({
+    _id: new mongoose.Types.ObjectId,
+    email: email
+  });
+  newEmail.save()
+    .then((err, email) => {
+      return email;
+    });
+}
+
+function saveSchedule(email) {
+  let newEmail = new model.email({
+    _id: new mongoose.Types.ObjectId,
+    email: email
+  });
+  newEmail.save()
+    .then((err, email) => {
+      return email;
+    });
+}
+
 function findEmail(email) {
   return model.email.find({email: email});
 }

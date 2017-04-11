@@ -10,6 +10,32 @@ let emailSchema = new mongoose.Schema({
 // Create a model based on the schema
 let Email = mongoose.model('Email', emailSchema);
 
+let scheduleSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  nome: {type: String, required: true, unique: true},
+  sobrenome: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  telefone: {type: String, required: true, unique: true},
+  data: {type: Date, required: true, unique: true},
+  horário: {type: String, required: true, unique: true},
+  updated_at: { type: Date, default: Date.now }
+});
+
+// Create a model based on the schema
+let Schedule = mongoose.model('Schedule', scheduleSchema);
+
+let contactSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  nome: {type: String, required: true, unique: true},
+  sobrenome: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  mensagem: {type: String, required: true, unique: true},
+  updated_at: { type: Date, default: Date.now }
+});
+
+// Create a model based on the schema
+let Contact = mongoose.model('Contact', contactSchema);
+
 let movementSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: { type: String, required: true, unique: true },
@@ -89,6 +115,8 @@ let Lesson = mongoose.model('Lesson', lessonSchema);
 
 module.exports = {
   email: Email,
+  schedule: Schedule,
+  contact: Contact,
   user: User,
   wod: Wod,
   movement: Movement,
