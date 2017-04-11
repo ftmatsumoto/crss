@@ -263,10 +263,10 @@ body {
 .steps-content a:hover {
   text-decoration: none;
 }
-
+/*
 .steps-content img {
   height: 50%;
-}
+}*/
 
 .steps-content.description img {
   height: 30%;
@@ -536,10 +536,10 @@ footer {
     width: 50%;
   }
   .description-video-left {
-    margin-right: 10px;
+    margin: 10px;
   }
   .description-video-right {
-    margin-left: 10px;
+    margin: 10px;
   }
 }
 

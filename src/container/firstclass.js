@@ -1,6 +1,5 @@
 import React from 'react';
 import Scheduleform from '../component/scheduleform.js';
-import emailForm from './emailform.js';
 
 const Firstclass = () => (
   <div>
