@@ -6,6 +6,7 @@ const path = require('path');
 const request = require('request');
 const stormpath = require('express-stormpath');
 const nodemailer = require('nodemailer');
+const compression = require('compression');
 
 const db = require('./helper.js');
 
@@ -48,6 +49,7 @@ transporter.verify(function(error, success) {
   }
 });
 
+app.use(compression());
 app.use(stormpath.init(app, {
   expand: {
     groups: true
