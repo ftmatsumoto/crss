@@ -232,7 +232,6 @@ class scheduleform extends Component {
               <MenuItem value={"6:00 - 7:00"} primaryText="6:00 - 7:00" />
               <MenuItem value={"7:00 - 8:00"} primaryText="7:00 - 8:00" />
               <MenuItem value={"8:00 - 9:00"} primaryText="8:00 - 9:00" />
-              <MenuItem value={"12:30 - 13:30"} primaryText="12:30 - 13:30" />
               <MenuItem value={"18:00 - 19:00"} primaryText="18:00 - 19:00" />
               <MenuItem value={"19:00 - 20:00"} primaryText="19:00 - 20:00" />
               <MenuItem value={"20:00 - 21:00"} primaryText="20:00 - 21:00" />

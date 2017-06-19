@@ -307,19 +307,19 @@ app.put('/checkin', stormpath.loginRequired, (req, res) => {
     });
 });
 
-app.get('/payment', (req, res) => {
-  let url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions/';
-  request
-    .post(url)
-    .form({email: 'admin@crossfitki.com.br', token: 'DC0FAEAA97934B62BC30656A820CC573'})
-    // .pipe('test.xml');
-    .on('response', function(response) {
-      response.on('data', (chunk) => {
-        console.log(chunk.toString('ascii'));
-        res.status(200).send(chunk.toString('ascii'));
-      });
-    });
-});
+// app.get('/payment', (req, res) => {
+//   let url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions/';
+//   request
+//     .post(url)
+//     .form({email: 'admin@crossfitki.com.br', token: ''})
+//     // .pipe('test.xml');
+//     .on('response', function(response) {
+//       response.on('data', (chunk) => {
+//         console.log(chunk.toString('ascii'));
+//         res.status(200).send(chunk.toString('ascii'));
+//       });
+//     });
+// });
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../build/index.html'));
