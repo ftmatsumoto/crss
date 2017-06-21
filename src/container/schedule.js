@@ -31,6 +31,15 @@ const tableData = [
     sabado: "",
   },
   {
+    horario: "9:00",
+    segunda: "CrossFit",
+    terca: "",
+    quarta: "CrossFit",
+    quinta: "",
+    sexta: "CrossFit",
+    sabado: "",
+  },
+  {
     horario: "10:00",
     segunda: "",
     terca: "",
@@ -41,7 +50,7 @@ const tableData = [
   },
   {
     horario: "12:00",
-    segunda: "",
+    segunda: "CrossFit",
     terca: "",
     quarta: "CrossFit",
     quinta: "",
