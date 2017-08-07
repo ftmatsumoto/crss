@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Authenticated } from 'react-stormpath';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import RaisedButton from 'material-ui/RaisedButton';

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Authenticated } from 'react-stormpath';
 
 import NavbarComponent from '../component/navbar';
 import BottomNavigation from '../component/bottomnav';

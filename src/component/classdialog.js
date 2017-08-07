@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Authenticated } from 'react-stormpath';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import UsersDialog from './userdialog';

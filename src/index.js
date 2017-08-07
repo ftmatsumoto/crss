@@ -8,7 +8,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 // Using an ES6 transpiler, like Babel.
-// import ReactStormpath, { Router } from 'react-stormpath';
 
 import Routes from './routes';
 import './index.css';
@@ -37,5 +36,4 @@ const App = () => (
   </MuiThemeProvider>
 );
 
-// ReactStormpath.init();
 ReactDOM.render( <App /> , document.getElementById('root'));

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Authenticated, NotAuthenticated } from 'react-stormpath';
 import Avatar from 'material-ui/Avatar';
 import Paper from 'material-ui/Paper';
 

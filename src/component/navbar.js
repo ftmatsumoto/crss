@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
-// import { Authenticated, NotAuthenticated, LogoutLink, LoginLink } from 'react-stormpath';
-
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import Drawer from 'material-ui/Drawer';
 import Menu from 'material-ui/Menu';

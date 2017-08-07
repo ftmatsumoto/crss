@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
-// import ReactStormpath, { Router, AuthenticatedRoute, LoginLink, HomeRoute, LoginRoute } from 'react-stormpath';
 
 import App from './container/App';
 import Chat from './container/chat';

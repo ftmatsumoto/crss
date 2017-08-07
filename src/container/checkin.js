@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Authenticated } from 'react-stormpath';
 
 import ClassDialog from '../component/classdialog.js';
 import { List } from 'material-ui/List';
