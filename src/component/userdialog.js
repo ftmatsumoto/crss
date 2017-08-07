@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Authenticated } from 'react-stormpath';
+// import { Authenticated } from 'react-stormpath';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 

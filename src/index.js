@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
+import { browserHistory, Router } from 'react-router';
 import { teal400, grey600 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -8,7 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 // Using an ES6 transpiler, like Babel.
-import ReactStormpath, { Router } from 'react-stormpath';
+// import ReactStormpath, { Router } from 'react-stormpath';
 
 import Routes from './routes';
 import './index.css';
@@ -37,5 +37,5 @@ const App = () => (
   </MuiThemeProvider>
 );
 
-ReactStormpath.init();
+// ReactStormpath.init();
 ReactDOM.render( <App /> , document.getElementById('root'));
